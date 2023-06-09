@@ -2,14 +2,11 @@ import React from 'react';
 import { MdClose } from 'react-icons/md';
 import { AiFillHome } from 'react-icons/ai';
 import { FaPowerOff } from 'react-icons/fa';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import useSidebar from './hooks/useSidebar';
 
 export default function Sidebar({ isOpen, handleOpen }) {
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    navigate('/');
-  };
+  const { handleLogout } = useSidebar();
 
   return (
     <div
