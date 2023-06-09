@@ -1,74 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { RiPencilFill, RiCloseFill } from 'react-icons/ri';
 import { BsTrash3, BsCheckLg } from 'react-icons/bs';
-import { deleteTodoApi, updateTodoApi } from '../../api/todos';
+import useTodoItem from './hooks/useTodoItem';
 
-export default function TodoItem({
-  todo: { id, todo, isCompleted },
-  setTodos,
-}) {
-  const [isEditMode, setIsEditMode] = useState(false);
-  const [editedTodo, setEditedTodo] = useState(todo);
-
-  const handleComplete = async () => {
-    const body = {
-      todo,
-      isCompleted: !isCompleted,
-    };
-
-    const res = await updateTodoApi(id, body);
-    if (res.status !== 200) return;
-
-    setTodos(prev =>
-      prev.map(todo => (todo.id === res.data.id ? res.data : todo))
-    );
-  };
-
-  const handleEdit = state => {
-    if (!state) {
-      setEditedTodo(todo);
-    }
-    setIsEditMode(state);
-  };
-
-  const handleTodoChange = e => {
-    setEditedTodo(e.target.value);
-  };
-
-  const handleTodoUpdate = async () => {
-    const body = {
-      todo: editedTodo,
-      isCompleted,
-    };
-
-    try {
-      const res = await updateTodoApi(id, body);
-      if (res.status !== 200) {
-        alert('수정 실패');
-      }
-
-      setTodos(prev =>
-        prev.map(todo => (todo.id === res.data.id ? res.data : todo))
-      );
-      setIsEditMode(false);
-    } catch (error) {
-      console.error(error);
-      alert('수정 실패');
-    }
-  };
-
-  const handleDelete = async () => {
-    try {
-      const res = await deleteTodoApi(id);
-      if (res.status !== 204) {
-        alert('삭제 실패');
-      }
-      setTodos(prev => prev.filter(todo => todo.id !== id));
-    } catch (error) {
-      console.error(error);
-      alert('에러 발생');
-    }
-  };
+export default function TodoItem({ todo: item, setTodos }) {
+  const {
+    id,
+    isCompleted,
+    handleComplete,
+    isEditMode,
+    todo,
+    editedTodo,
+    handleTodoChange,
+    handleEdit,
+    handleDelete,
+    handleTodoUpdate,
+  } = useTodoItem({ item, setTodos });
 
   return (
     <li className='flex items-center justify-between mb-2 text-2xl'>
