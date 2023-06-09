@@ -25,7 +25,7 @@ export default function Form({ type }) {
         value={form.password}
         onChange={handleChange}
         className='border-2 border-gray-400 rounded-md px-4 py-2 mb-4'
-        placeholder='비밀번호'
+        placeholder='비밀번호 (8자 이상)'
         required
       />
 
