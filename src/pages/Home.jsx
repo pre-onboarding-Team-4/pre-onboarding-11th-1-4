@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Button from '../components/common/Button';
-import { useNavigate } from 'react-router-dom';
+import useHome from '../hooks/useHome';
 
 export default function Home() {
-  const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(() => {
-    return localStorage.getItem('token');
-  });
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem('token');
-  };
+  const { navigate, isLoggedIn, handleLogout } = useHome();
 
   return (
     <section className='flex flex-col'>
