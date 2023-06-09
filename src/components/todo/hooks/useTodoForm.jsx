@@ -24,7 +24,7 @@ export default function useTodoForm(setTodos) {
       setTodos(prev => [...prev, res.data]);
     } catch (error) {
       console.error(error);
-      alert('에러가 발생했습니다.');
+      alert('할 일을 입력해 주세요.');
     } finally {
       setNewTodo('');
     }
