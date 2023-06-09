@@ -35,13 +35,13 @@ export default function Home() {
         <>
           <Button
             text='나의 투두 리스트'
-            bgColor='bg-blue-500 hover:bg-blue-700'
+            bgColor='bg-purple-600 hover:bg-purple-700'
             custom='mb-4'
             onClick={() => navigate('todo')}
           />
           <Button
             text='로그아웃'
-            bgColor='bg-red-500 hover:bg-red-700'
+            bgColor='bg-red-600 hover:bg-red-700'
             onClick={handleLogout}
           />
         </>
