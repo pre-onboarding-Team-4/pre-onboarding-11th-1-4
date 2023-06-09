@@ -15,8 +15,6 @@ export default function useTodoItem({
     };
 
     const res = await updateTodoApi(id, body);
-    if (res.status !== 200) return;
-
     setTodos(prev =>
       prev.map(todo => (todo.id === res.data.id ? res.data : todo))
     );
@@ -41,10 +39,6 @@ export default function useTodoItem({
 
     try {
       const res = await updateTodoApi(id, body);
-      if (res.status !== 200) {
-        alert('수정 실패');
-      }
-
       setTodos(prev =>
         prev.map(todo => (todo.id === res.data.id ? res.data : todo))
       );
@@ -57,10 +51,7 @@ export default function useTodoItem({
 
   const handleDelete = async () => {
     try {
-      const res = await deleteTodoApi(id);
-      if (res.status !== 204) {
-        alert('삭제 실패');
-      }
+      await deleteTodoApi(id);
       setTodos(prev => prev.filter(todo => todo.id !== id));
     } catch (error) {
       console.error(error);
