@@ -8,7 +8,6 @@ export default function useTodo() {
   const navigate = useNavigate();
 
   const handleOpen = () => {
-    console.log('왜..?', isOpen);
     setIsOpen(prev => !prev);
   };
 
