@@ -10,8 +10,8 @@ export default function Sidebar({ isOpen, handleOpen }) {
 
   return (
     <div
-      className={`bg-gray-900 text-white w-64 max-w-full h-screen fixed left-0 top-0 overflow-y-auto translate-x-[-100%] ${
-        isOpen && 'translate-x-0'
+      className={`bg-gray-900 text-white w-64 max-w-full h-screen fixed left-0 top-0 overflow-y-auto ${
+        isOpen ? 'translate-x-0' : 'translate-x-[-100%]'
       } transition-transform`}
     >
       <header className='p-4 flex justify-between items-center'>
