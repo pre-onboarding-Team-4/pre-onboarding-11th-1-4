@@ -16,11 +16,6 @@ export default function useTodoForm(setTodos) {
 
     try {
       const res = await createTodoApi(body);
-      if (res.status !== 201) {
-        alert('할 일 추가에 실패했습니다.');
-        return;
-      }
-
       setTodos(prev => [...prev, res.data]);
     } catch (error) {
       console.error(error);
