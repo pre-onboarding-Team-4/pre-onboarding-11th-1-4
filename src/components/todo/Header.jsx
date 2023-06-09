@@ -9,6 +9,7 @@ export default function Header({ handleOpen }) {
         onClick={handleOpen}
         className='absolute left-4 text-2xl'
         type='button'
+        aria-label='메뉴'
       >
         <GiHamburgerMenu />
       </button>
