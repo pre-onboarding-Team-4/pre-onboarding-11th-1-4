@@ -11,22 +11,22 @@ export default function useSign(type, data) {
 
     if (type === 'signup') {
       try {
-        signUpApi({ email, password });
+        await signUpApi({ email, password });
+        navigate(`/${path}`);
       } catch (error) {
-        alert('에러가 발생했습니다.');
+        alert('이미 존재하는 아이디입니다.');
         console.error(error);
       }
     } else {
       try {
         const res = await signInApi({ email, password });
         localStorage.setItem('token', res.data.access_token);
+        navigate(`/${path}`);
       } catch (error) {
-        alert('에러가 발생했습니다.');
+        alert('아이디 또는 비밀번호가 일치하지 않습니다.');
         console.error(error);
       }
     }
-
-    navigate(`/${path}`);
   };
 
   return handleSubmit;
