@@ -19,7 +19,7 @@ export default function useForm() {
   }, [navigate]);
 
   useEffect(() => {
-    const pattern = /^[^@].*[^@]$/;
+    const pattern = /^[^@]+@[^@]+$/;
     if (pattern.test(form.email) && form.password.length >= 8) {
       if (!form.isActive) {
         setForm(prev => ({ ...prev, isActive: true }));
