@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import React from 'react';
+import { HeaderButton } from '../../components/HeaderButton';
 
 export default function Header() {
 	return (
 		<StyledHeader>
 			<span>Wanted-Pre-Onboarding-Frontend</span>
 			<div className="button-container">
-				<button>로그인</button>
-				<button>회원가입</button>
+				<HeaderButton>로그인</HeaderButton>
+				<HeaderButton>회원가입</HeaderButton>
 			</div>
 		</StyledHeader>
 	);
