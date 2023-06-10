@@ -50,7 +50,7 @@ export default function TodoList() {
 					</ActionButton>
 				</InputContainer>
 				{todos?.map((todo) => {
-					return <Todo todo={todo} />;
+					return <Todo todo={todo} refreshList={getTodoList} />;
 				})}
 			</TodoContainer>
 		</Container>

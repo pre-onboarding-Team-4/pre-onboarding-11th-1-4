@@ -2,18 +2,24 @@ import React, { useState } from 'react';
 import TodoDTO from '../../types/TodoDTO';
 import styled from 'styled-components';
 import { ActionButton } from '../ActionButton';
-import { updateTodo } from '../../common/api/api';
+import { updateTodo, deleteTodo } from '../../common/api/api';
 
 type TodoProps = {
 	todo: TodoDTO;
+	refreshList: () => Promise<void>;
 };
 
-export default function Todo({ todo }: TodoProps) {
+export default function Todo({ todo, refreshList }: TodoProps) {
 	const [checked, setChecked] = useState<boolean>(todo.isCompleted);
 
 	const handleCheckBox = async () => {
 		await updateTodo({ ...todo, isCompleted: !checked });
 		setChecked(!checked);
+	};
+
+	const handleDeleteTodo = async () => {
+		await deleteTodo(todo.id);
+		refreshList();
 	};
 
 	return (
@@ -24,7 +30,9 @@ export default function Todo({ todo }: TodoProps) {
 			</label>
 			<ButtonContainer>
 				<ActionButton style={{ backgroundColor: '#6be675' }}>수정</ActionButton>
-				<ActionButton style={{ backgroundColor: '#e66b6b' }}>삭제</ActionButton>
+				<ActionButton style={{ backgroundColor: '#e66b6b' }} onClick={handleDeleteTodo}>
+					삭제
+				</ActionButton>
 			</ButtonContainer>
 		</TodoElement>
 	);

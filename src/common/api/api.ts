@@ -75,3 +75,16 @@ export const updateTodo = async (todo: TodoDTO) => {
 		console.log(err.message);
 	}
 };
+
+export const deleteTodo = async (todoId: number) => {
+	try {
+		const data = await authInstance.delete(`/todos/${todoId}`);
+		if (data.status === 204) {
+			toast.success('투두 삭제 성공!');
+		} else {
+			throw new Error('투두 삭제 실패');
+		}
+	} catch (err: any) {
+		console.log(err.message);
+	}
+};
