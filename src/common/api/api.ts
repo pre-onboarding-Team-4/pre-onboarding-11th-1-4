@@ -1,5 +1,6 @@
 import { toast } from 'react-toastify';
 import { baseInstance, authInstance } from './axios';
+import TodoDTO from '../../types/TodoDTO';
 
 export const signUp = async (email: string, password: string) => {
 	try {
@@ -38,7 +39,37 @@ export const getTodos = async () => {
 		if (data.status === 200) {
 			return data;
 		} else {
-			throw new Error('로그인 실패');
+			throw new Error('투두 조회 실패');
+		}
+	} catch (err: any) {
+		console.log(err.message);
+	}
+};
+
+export const createTodo = async (todo: string) => {
+	try {
+		const params = { todo: todo };
+		const data = await authInstance.post('/todos', params);
+		if (data.status === 201) {
+			toast.success('투두 생성 성공!');
+			return data;
+		} else {
+			throw new Error('투두 생성 실패');
+		}
+	} catch (err: any) {
+		console.log(err.message);
+	}
+};
+
+export const updateTodo = async (todo: TodoDTO) => {
+	try {
+		const params = { todo: todo.todo, isCompleted: todo.isCompleted };
+		const data = await authInstance.put(`/todos/${todo.id}`, params);
+		if (data.status === 200) {
+			toast.success('투두 수정 성공!');
+			return data;
+		} else {
+			throw new Error('투두 수정 실패');
 		}
 	} catch (err: any) {
 		console.log(err.message);
