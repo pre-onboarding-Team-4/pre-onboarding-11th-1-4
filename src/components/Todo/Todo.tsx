@@ -11,6 +11,8 @@ type TodoProps = {
 
 export default function Todo({ todo, refreshList }: TodoProps) {
 	const [checked, setChecked] = useState<boolean>(todo.isCompleted);
+	const [onEdit, setOnEdit] = useState<boolean>(false);
+	const [editInput, setEditInput] = useState<string>(todo.todo);
 
 	const handleCheckBox = async () => {
 		await updateTodo({ ...todo, isCompleted: !checked });
@@ -22,18 +24,51 @@ export default function Todo({ todo, refreshList }: TodoProps) {
 		refreshList();
 	};
 
+	const handleEditTodo = async () => {
+		await updateTodo({ ...todo, todo: editInput });
+		setOnEdit(false);
+		refreshList();
+	};
+
+	const handleEditInpupt = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setEditInput(e.target.value);
+	};
+
 	return (
 		<TodoElement>
 			<label>
 				<input type="checkbox" checked={checked} onChange={handleCheckBox} />
-				<span>{todo.todo}</span>
+				{onEdit ? <EditInput type="text" value={editInput} onChange={handleEditInpupt} /> : <span>{todo.todo}</span>}
 			</label>
-			<ButtonContainer>
-				<ActionButton style={{ backgroundColor: '#6be675' }}>수정</ActionButton>
-				<ActionButton style={{ backgroundColor: '#e66b6b' }} onClick={handleDeleteTodo}>
-					삭제
-				</ActionButton>
-			</ButtonContainer>
+			{onEdit ? (
+				<ButtonContainer>
+					<ActionButton style={{ backgroundColor: '#6be675' }} onClick={handleEditTodo}>
+						제출
+					</ActionButton>
+					<ActionButton
+						style={{ backgroundColor: '#e66b6b' }}
+						onClick={() => {
+							setOnEdit(false);
+						}}
+					>
+						취소
+					</ActionButton>
+				</ButtonContainer>
+			) : (
+				<ButtonContainer>
+					<ActionButton
+						style={{ backgroundColor: '#6be675' }}
+						onClick={() => {
+							setOnEdit(true);
+						}}
+					>
+						수정
+					</ActionButton>
+					<ActionButton style={{ backgroundColor: '#e66b6b' }} onClick={handleDeleteTodo}>
+						삭제
+					</ActionButton>
+				</ButtonContainer>
+			)}
 		</TodoElement>
 	);
 }
@@ -47,4 +82,11 @@ const TodoElement = styled.li`
 const ButtonContainer = styled.div`
 	display: flex;
 	gap: 5px;
+`;
+
+const EditInput = styled.input`
+	border: none;
+	border-bottom: 1px solid #333;
+	height: 20px;
+	width: 300px;
 `;

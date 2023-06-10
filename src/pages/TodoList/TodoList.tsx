@@ -14,7 +14,7 @@ export default function TodoList() {
 
 	const navigate = useNavigate();
 
-	const getTodoList = async () => {
+	const getTodoList = async (): Promise<void> => {
 		const res = await getTodos();
 		setTodos(res?.data);
 	};
@@ -44,7 +44,7 @@ export default function TodoList() {
 			<TodoContainer>
 				<span className="todo-title">TODOLIST</span>
 				<InputContainer onSubmit={handleCreateTodo}>
-					<UserSignInput className="todo-create-input" onChange={handleTodoInput} value={todoInput} />
+					<UserSignInput className="todo-create-input" onChange={handleTodoInput} value={todoInput} type="text" />
 					<ActionButton style={{ backgroundColor: '#a5d5f8' }} type="submit">
 						추가
 					</ActionButton>
