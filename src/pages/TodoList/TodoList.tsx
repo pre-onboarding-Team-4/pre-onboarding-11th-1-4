@@ -44,8 +44,14 @@ export default function TodoList() {
 			<TodoContainer>
 				<span className="todo-title">TODOLIST</span>
 				<InputContainer onSubmit={handleCreateTodo}>
-					<UserSignInput className="todo-create-input" onChange={handleTodoInput} value={todoInput} type="text" />
-					<ActionButton style={{ backgroundColor: '#a5d5f8' }} type="submit">
+					<UserSignInput
+						className="todo-create-input"
+						onChange={handleTodoInput}
+						value={todoInput}
+						type="text"
+						data-testid="new-todo-input"
+					/>
+					<ActionButton style={{ backgroundColor: '#a5d5f8' }} type="submit" data-testid="new-todo-add-button">
 						추가
 					</ActionButton>
 				</InputContainer>

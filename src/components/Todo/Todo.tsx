@@ -30,7 +30,7 @@ export default function Todo({ todo, refreshList }: TodoProps) {
 		refreshList();
 	};
 
-	const handleEditInpupt = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleEditInput = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setEditInput(e.target.value);
 	};
 
@@ -38,11 +38,15 @@ export default function Todo({ todo, refreshList }: TodoProps) {
 		<TodoElement>
 			<label>
 				<input type="checkbox" checked={checked} onChange={handleCheckBox} />
-				{onEdit ? <EditInput type="text" value={editInput} onChange={handleEditInpupt} /> : <span>{todo.todo}</span>}
+				{onEdit ? (
+					<EditInput type="text" value={editInput} onChange={handleEditInput} data-testid="modify-input" />
+				) : (
+					<span>{todo.todo}</span>
+				)}
 			</label>
 			{onEdit ? (
 				<ButtonContainer>
-					<ActionButton style={{ backgroundColor: '#6be675' }} onClick={handleEditTodo}>
+					<ActionButton style={{ backgroundColor: '#6be675' }} onClick={handleEditTodo} data-testid="submit-button">
 						제출
 					</ActionButton>
 					<ActionButton
@@ -50,6 +54,7 @@ export default function Todo({ todo, refreshList }: TodoProps) {
 						onClick={() => {
 							setOnEdit(false);
 						}}
+						data-testid="cancel-button"
 					>
 						취소
 					</ActionButton>
@@ -61,10 +66,11 @@ export default function Todo({ todo, refreshList }: TodoProps) {
 						onClick={() => {
 							setOnEdit(true);
 						}}
+						data-testid="modify-button"
 					>
 						수정
 					</ActionButton>
-					<ActionButton style={{ backgroundColor: '#e66b6b' }} onClick={handleDeleteTodo}>
+					<ActionButton style={{ backgroundColor: '#e66b6b' }} onClick={handleDeleteTodo} data-testid="delete-button">
 						삭제
 					</ActionButton>
 				</ButtonContainer>
