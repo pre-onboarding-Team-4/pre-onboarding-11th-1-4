@@ -3,16 +3,12 @@ import { toast } from 'react-toastify';
 
 export const baseInstance = axios.create({
 	baseURL: 'https://www.pre-onboarding-selection-task.shop/',
-	headers: {
-		'Content-Type': 'application/json',
-	},
 });
 
 export const authInstance = axios.create({
 	baseURL: 'https://www.pre-onboarding-selection-task.shop/',
 	headers: {
 		Authorization: 'Bearer ' + localStorage.accessToken,
-		'Content-Type': 'application/json',
 	},
 });
 
