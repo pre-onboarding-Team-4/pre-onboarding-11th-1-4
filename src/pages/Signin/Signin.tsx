@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { UserSignInput } from '../../components/UserSignInput';
 import styled from 'styled-components';
 import { Button } from '../../components/Button';
+import checkValidate from '../../utils/checkValidate';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function Signin() {
 	const [email, setEmail] = useState<string>('');
@@ -10,24 +13,38 @@ export default function Signin() {
 
 	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setEmail(e.target.value);
+		checkValidate(e.target.value, password) ? setIsValidate(true) : setIsValidate(false);
 	};
 
 	const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPassword(e.target.value);
+		checkValidate(email, e.target.value) ? setIsValidate(true) : setIsValidate(false);
+	};
+
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		toast.success('로그인 성공!');
 	};
 
 	return (
-		<InputContainer>
+		<InputContainer onSubmit={handleSubmit} noValidate>
 			<span className="signin-title">로그인</span>
 			<InputBox>
 				<InputText>이메일</InputText>
 				<UserSignInput type="email" value={email} onChange={handleEmailChange} />
+				{email.length > 0 && !email.includes('@') && <WarnText>이메일을 정확히 입력해주세요.</WarnText>}
 			</InputBox>
 			<InputBox>
 				<InputText>비밀번호</InputText>
 				<UserSignInput type="password" value={password} onChange={handlePasswordChange} />
+				{password.length > 0 && password.length < 8 && <WarnText>비밀번호를 정확히 입력해주세요.</WarnText>}
 			</InputBox>
-			<Button disabled={!isValidate}>로그인</Button>
+			<Link className="go-to-signup-btn" to="/signup">
+				아직 회원이 아니시라면?
+			</Link>
+			<Button type="submit" disabled={!isValidate}>
+				로그인
+			</Button>
 		</InputContainer>
 	);
 }
@@ -42,6 +59,10 @@ const InputContainer = styled.form`
 	.signin-title {
 		font-size: 24px;
 	}
+	.go-to-signup-btn {
+		color: blue;
+		cursor: pointer;
+	}
 `;
 
 const InputBox = styled.div`
@@ -54,4 +75,10 @@ const InputBox = styled.div`
 const InputText = styled.p`
 	width: 100%;
 	margin-bottom: 10px;
+`;
+
+const WarnText = styled.p`
+	width: 100%;
+	margin: 5px 0;
+	color: red;
 `;
