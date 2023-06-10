@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { UserSignInput } from '../../components/UserSignInput';
 import styled from 'styled-components';
 import { Button } from '../../components/Button';
@@ -6,6 +6,7 @@ import checkValidate from '../../utils/checkValidate';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { signIn } from '../../common/api/api';
+import { toast } from 'react-toastify';
 
 export default function Signin() {
 	const [email, setEmail] = useState<string>('');
@@ -13,6 +14,11 @@ export default function Signin() {
 	const [isValidate, setIsValidate] = useState<boolean>(false);
 
 	const navigate = useNavigate();
+
+	useEffect(() => {
+		localStorage.getItem('accessToken') && navigate('/todo');
+		toast.info('리다이렉트 되었습니다.');
+	}, []);
 
 	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setEmail(e.target.value);

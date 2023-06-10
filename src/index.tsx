@@ -5,6 +5,7 @@ import { Error } from './pages/Error';
 import { Main } from './pages/Main';
 import { Signin } from './pages/Signin';
 import { Signup } from './pages/Signup';
+import { Todo } from './pages/Todo';
 
 const router = createBrowserRouter([
 	{
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
 			{ index: true, element: <Main /> },
 			{ path: '/signin', element: <Signin /> },
 			{ path: '/signup', element: <Signup /> },
-			// { path: '/all', element: <ALL /> },
+			{ path: '/todo', element: <Todo /> },
 		],
 	},
 ]);
