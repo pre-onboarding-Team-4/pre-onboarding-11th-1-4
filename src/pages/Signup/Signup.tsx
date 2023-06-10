@@ -3,12 +3,15 @@ import { UserSignInput } from '../../components/UserSignInput';
 import styled from 'styled-components';
 import { Button } from '../../components/Button';
 import checkValidate from '../../utils/checkValidate';
-import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { signUp } from '../../common/api/api';
 
 export default function Signup() {
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [isValidate, setIsValidate] = useState<boolean>(false);
+
+	const navigate = useNavigate();
 
 	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setEmail(e.target.value);
@@ -20,9 +23,10 @@ export default function Signup() {
 		checkValidate(email, e.target.value) ? setIsValidate(true) : setIsValidate(false);
 	};
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		toast.success('로그인 성공!');
+		const res = await signUp(email, password);
+		if (res?.status === 201) navigate('/signin');
 	};
 
 	return (
