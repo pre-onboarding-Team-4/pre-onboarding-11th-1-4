@@ -1,5 +1,25 @@
+import styled from 'styled-components';
 import React from 'react';
 
 export default function Header() {
-	return <div>Header</div>;
+	return (
+		<StyledHeader>
+			<span>Wanted-Pre-Onboarding-Frontend</span>
+			<div className="button-container">
+				<button>로그인</button>
+				<button>회원가입</button>
+			</div>
+		</StyledHeader>
+	);
 }
+
+const StyledHeader = styled.header`
+	display: flex;
+	justify-content: space-between;
+	margin: 30px 80px;
+	font-size: 24px;
+	.button-container {
+		display: flex;
+		gap: 30px;
+	}
+`;
