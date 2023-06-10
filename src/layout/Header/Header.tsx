@@ -1,13 +1,14 @@
 import styled from 'styled-components';
-import { HeaderButton } from '../../components/HeaderButton';
+import { Button } from '../../components/Button';
 
 export default function Header() {
 	return (
 		<StyledHeader>
 			<span>Wanted-Pre-Onboarding-Frontend</span>
 			<div className="button-container">
-				<HeaderButton>로그인</HeaderButton>
-				<HeaderButton>회원가입</HeaderButton>
+				<Button>홈</Button>
+				<Button>로그인</Button>
+				<Button>회원가입</Button>
 			</div>
 		</StyledHeader>
 	);

@@ -1,5 +1,5 @@
-import React from 'react';
+import { Navigate } from 'react-router-dom';
 
 export default function Main() {
-	return <div>Main</div>;
+	return localStorage.accessToken ? <Navigate to="/todo" /> : <Navigate to="/signin" />;
 }

@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-type HeaderButtonProps = {
+type ButtonProps = {
 	children: ReactNode;
 };
 
-export default function HeaderButton({ children }: HeaderButtonProps) {
+export default function Button({ children }: ButtonProps) {
 	return <StyledButton>{children}</StyledButton>;
 }
 
