@@ -31,3 +31,16 @@ export const signIn = async (email: string, password: string) => {
 		console.log(err.message);
 	}
 };
+
+export const getTodos = async () => {
+	try {
+		const data = await authInstance.get('/todos');
+		if (data.status === 200) {
+			return data;
+		} else {
+			throw new Error('로그인 실패');
+		}
+	} catch (err: any) {
+		console.log(err.message);
+	}
+};

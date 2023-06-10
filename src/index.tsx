@@ -5,7 +5,7 @@ import { Error } from './pages/Error';
 import { Main } from './pages/Main';
 import { Signin } from './pages/Signin';
 import { Signup } from './pages/Signup';
-import { Todo } from './pages/Todo';
+import { TodoList } from './pages/TodoList';
 
 const router = createBrowserRouter([
 	{
@@ -16,7 +16,7 @@ const router = createBrowserRouter([
 			{ index: true, element: <Main /> },
 			{ path: '/signin', element: <Signin /> },
 			{ path: '/signup', element: <Signup /> },
-			{ path: '/todo', element: <Todo /> },
+			{ path: '/todo', element: <TodoList /> },
 		],
 	},
 ]);
