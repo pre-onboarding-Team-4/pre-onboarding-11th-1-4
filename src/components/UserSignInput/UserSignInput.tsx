@@ -10,5 +10,7 @@ export default function UserSignInput(props: InputProps) {
 const StyledInput = styled.input`
 	width: 500px;
 	height: 30px;
+	border: 1px solid;
 	border-radius: 4px;
+	border-color: #333;
 `;
