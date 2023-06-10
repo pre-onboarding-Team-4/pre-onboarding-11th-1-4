@@ -1,12 +1,10 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 
-type ButtonProps = {
-	children: ReactNode;
-};
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export default function Button({ children }: ButtonProps) {
-	return <StyledButton>{children}</StyledButton>;
+export default function Button(props: ButtonProps) {
+	return <StyledButton {...props}>{props.children}</StyledButton>;
 }
 
 const StyledButton = styled.button`
