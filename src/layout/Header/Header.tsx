@@ -13,10 +13,10 @@ export default function Header() {
 				<div className="button-container">
 					<Button
 						onClick={() => {
-							navigate('/');
+							navigate('/todo');
 						}}
 					>
-						홈
+						투두
 					</Button>
 					<Button
 						onClick={() => {
@@ -31,6 +31,17 @@ export default function Header() {
 						}}
 					>
 						회원가입
+					</Button>
+					<Button
+						onClick={() => {
+							if (localStorage.getItem('accessToken')) {
+								localStorage.clear();
+								navigate('/');
+								toast.success('로그아웃 되었습니다.');
+							}
+						}}
+					>
+						로그아웃
 					</Button>
 				</div>
 			</StyledHeader>

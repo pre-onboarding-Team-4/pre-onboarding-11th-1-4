@@ -16,8 +16,10 @@ export default function Signin() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		localStorage.getItem('accessToken') && navigate('/todo');
-		toast.info('리다이렉트 되었습니다.');
+		if (localStorage.getItem('accessToken')) {
+			navigate('/todo');
+			toast.info('리다이렉트 되었습니다.');
+		}
 	}, []);
 
 	const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -41,18 +43,18 @@ export default function Signin() {
 			<span className="signin-title">로그인</span>
 			<InputBox>
 				<InputText>이메일</InputText>
-				<UserSignInput type="email" value={email} onChange={handleEmailChange} />
+				<UserSignInput type="email" value={email} onChange={handleEmailChange} data-testid="email-input" />
 				{email.length > 0 && !email.includes('@') && <WarnText>이메일을 정확히 입력해주세요.</WarnText>}
 			</InputBox>
 			<InputBox>
 				<InputText>비밀번호</InputText>
-				<UserSignInput type="password" value={password} onChange={handlePasswordChange} />
+				<UserSignInput type="password" value={password} onChange={handlePasswordChange} data-testid="password-input" />
 				{password.length > 0 && password.length < 8 && <WarnText>비밀번호를 정확히 입력해주세요.</WarnText>}
 			</InputBox>
 			<Link className="go-to-signup-btn" to="/signup">
 				아직 회원이 아니시라면?
 			</Link>
-			<Button type="submit" disabled={!isValidate}>
+			<Button type="submit" disabled={!isValidate} data-testid="signin-button">
 				로그인
 			</Button>
 		</InputContainer>
