@@ -53,6 +53,7 @@ export default function Todo({ todo, refreshList }: TodoProps) {
 						style={{ backgroundColor: '#e66b6b' }}
 						onClick={() => {
 							setOnEdit(false);
+							setEditInput(todo.todo);
 						}}
 						data-testid="cancel-button"
 					>
