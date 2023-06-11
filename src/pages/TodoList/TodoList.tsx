@@ -25,18 +25,21 @@ export default function TodoList() {
 
 	const handleCreateTodo = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const res = await createTodo(todoInput);
-		setTodos([...todos, res?.data]);
-		setTodoInput('');
-		getTodoList();
+		if (todoInput.length > 0) {
+			const res = await createTodo(todoInput);
+			setTodos([...todos, res?.data]);
+			setTodoInput('');
+			getTodoList();
+		}
 	};
 
 	useEffect(() => {
 		if (!localStorage.getItem('accessToken')) {
 			navigate('/signin');
 			toast.info('리다이렉트 되었습니다.');
+		} else {
+			getTodoList();
 		}
-		getTodoList();
 	}, []);
 
 	return (
