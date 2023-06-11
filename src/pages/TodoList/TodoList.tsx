@@ -37,9 +37,8 @@ export default function TodoList() {
 		if (!localStorage.getItem('accessToken')) {
 			navigate('/signin');
 			toast.info('리다이렉트 되었습니다.');
-		} else {
-			getTodoList();
 		}
+		getTodoList();
 	}, []);
 
 	return (
