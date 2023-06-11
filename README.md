@@ -16,7 +16,7 @@
 </table>
 
 ## 배포주소
-[배포주소](https://wanted-pre-onboarding-jyroh.netlify.app/signup)
+[배포주소](https://wanted-pre-onboarding-jyroh.netlify.app/)
 
 ## 사용 기술
 
