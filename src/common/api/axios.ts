@@ -7,9 +7,6 @@ export const baseInstance = axios.create({
 
 export const authInstance = axios.create({
 	baseURL: 'https://www.pre-onboarding-selection-task.shop/',
-	headers: {
-		Authorization: 'Bearer ' + localStorage.accessToken,
-	},
 });
 
 baseInstance.interceptors.request.use(
@@ -35,6 +32,7 @@ baseInstance.interceptors.response.use(
 
 authInstance.interceptors.request.use(
 	function (config) {
+		config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`;
 		return config;
 	},
 	function (error) {

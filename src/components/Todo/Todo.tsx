@@ -6,7 +6,7 @@ import { updateTodo, deleteTodo } from '../../common/api/api';
 
 type TodoProps = {
 	todo: TodoDTO;
-	refreshList: () => Promise<void>;
+	refreshList: () => void;
 };
 
 export default function Todo({ todo, refreshList }: TodoProps) {
