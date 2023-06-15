@@ -1,6 +1,6 @@
 // 로그인 페이지
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import AuthApi from "../apis/AuthApis";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,12 @@ function LoginPage() {
 
     //console.log(email, emailCheck)
     //console.log(pw, pwCheck)
+
+    useEffect(() => {
+        if(localStorage.getItem('access_token')){
+            navigate('/todo')
+        }
+    });
 
     const onChangeEmail = (e) => {
         //console.log(e.target.value)

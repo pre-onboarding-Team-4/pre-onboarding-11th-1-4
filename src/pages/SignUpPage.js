@@ -1,6 +1,6 @@
 // 회원가입 페이지
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthApi from "../apis/AuthApis";
 import { useNavigate } from "react-router-dom";
 
@@ -13,6 +13,12 @@ function SignUpPage() {
     const navigate = useNavigate();
     //console.log(email, emailCheck)
     //console.log(pw, pwCheck)
+    
+    useEffect(() => {
+        if(localStorage.getItem('access_token')){
+            navigate('/todo')
+        }
+    });
 
     const onChangeEmail = (e) => {
         //console.log(e.target.value)
@@ -45,7 +51,9 @@ function SignUpPage() {
             password: pw
         }).then(function(response){
             // console.log(response);
-            navigate('/login');
+            if(response.status == 201) {
+                navigate('/login');
+            }
         }).catch(function(error) {
             alert('error');
         })
