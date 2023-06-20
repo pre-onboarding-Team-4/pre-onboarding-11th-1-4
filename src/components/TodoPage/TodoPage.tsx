@@ -42,7 +42,7 @@ function TodoItem({
   };
 
   return !isUpdatemode ? (
-    <li>
+    <Styled.TodoItem>
       <label>
         <input type='checkbox' checked={isCompleted} onChange={handleCheck} />
         <span>{todo}</span>
@@ -53,9 +53,9 @@ function TodoItem({
       <button data-testid='delete-button' onClick={() => deleteTodo(id)}>
         삭제
       </button>
-    </li>
+    </Styled.TodoItem>
   ) : (
-    <li>
+    <Styled.TodoItem>
       <form onSubmit={handleSubmit}>
         <label>
           <input type='checkbox' checked={isCompleted} onChange={handleCheck} />
@@ -68,7 +68,7 @@ function TodoItem({
           취소
         </button>
       </form>
-    </li>
+    </Styled.TodoItem>
   );
 }
 
@@ -103,6 +103,7 @@ export default function TodoPage() {
       console.log(result);
     } else {
       setTodoList((todo) => [...todo, result]);
+      $input.todo.value = '';
     }
   };
 
@@ -146,14 +147,16 @@ export default function TodoPage() {
   return (
     <Styled.TodoPage>
       <Styled.Form onSubmit={handleAddTodo}>
-        <input data-testid='new-todo-input' name='todo' />
+        <input data-testid='new-todo-input' name='todo' autoComplete='off' />
         <button data-testid='new-todo-add-button' type='submit'>
           추가
         </button>
       </Styled.Form>
-      {todolist.map((todo) => (
-        <TodoItem key={todo.id} item={todo} updateTodo={updateTodo} deleteTodo={deleteTodo} />
-      ))}
+      <Styled.TodoList>
+        {todolist.map((todo) => (
+          <TodoItem key={todo.id} item={todo} updateTodo={updateTodo} deleteTodo={deleteTodo} />
+        ))}
+      </Styled.TodoList>
     </Styled.TodoPage>
   );
 }

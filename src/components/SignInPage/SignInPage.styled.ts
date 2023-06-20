@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 
 export const Form = styled.form`
-  width: 300px;
   height: fit-content;
 
   display: flex;
+  flex-direction: column;
   gap: 10px;
 
   div {
