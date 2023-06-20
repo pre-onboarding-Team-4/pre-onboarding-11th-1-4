@@ -1,12 +1,11 @@
 import React from "react";
+import '../css/Header.css';
 
 function Header() {
 
     return (
-        <div>
-            <div>
-                <h1>원티드 프리온보딩 프론트엔드 인턴십 사전과제</h1>
-            </div>
+        <div className="header">
+            <h1 className="headerText">원티드 프리온보딩 프론트엔드 인턴십 사전과제</h1>
         </div>
     )
 }

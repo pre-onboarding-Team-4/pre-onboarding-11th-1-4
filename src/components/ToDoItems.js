@@ -76,24 +76,24 @@ function ToDoItems({todo, setTodo, a, i}) {
     return(
         <div>
             {modiButton == false ? (
-                <li>
+                <li className="todoItem">
                     <label>
                         <input type="checkbox" disabled/>
                         <span>{a.todo}</span>
                     </label>
-                    <button data-testid="modify-button" onClick={()=>{
+                    <button data-testid="modify-button" className="modiButton" onClick={()=>{
                         setModiButton(true);
                     }}>수정</button>
-                    <button data-testid="delete-button" onClick={onClickDelete}>삭제</button>
+                    <button data-testid="delete-button" className="deleteButton" onClick={onClickDelete}>삭제</button>
                </li>
             ) : (
-                <li>
+                <li className="todoItem">
                     <label>
                         <input type="checkbox" onChange={onChangeCheckBox}/>
                         <input data-testid="modify-input" value={modiInput} onChange={onChangeModiInput}/>
                     </label>
-                    <button data-testid="submit-button" onClick={onClickModify}>제출</button>   
-                    <button data-testid="cancel-button" onClick={()=>{
+                    <button data-testid="submit-button" className="submitButton" onClick={onClickModify}>제출</button>   
+                    <button data-testid="cancel-button" className="cancelButton" onClick={()=>{
                         setModiButton(false);   
                     }}>취소</button>
                 </li>

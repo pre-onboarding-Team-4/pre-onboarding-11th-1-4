@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import AuthApi from "../apis/AuthApis";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import '../css/Auth.css'
 
 function LoginPage() {
     const [email, setEmail] = useState('');
@@ -67,23 +68,25 @@ function LoginPage() {
     return(
         <div>
             <Header></Header>
-            <h2>로그인</h2>
-            <div>
-                <p>이메일</p>
-                <input data-testid="email-input" onChange={onChangeEmail}/>
-            </div>
+            <div className="auth">
+                <h2 className="authType">로그인</h2>
+                <div>
+                    <p className="email">이메일</p>
+                    <input data-testid="email-input" className="emailInput" onChange={onChangeEmail}/>
+                </div>
 
-            <div>
-                <p>비밀번호</p>
-                <input data-testid="password-input" onChange={onChangePw}/>
-            </div>
+                <div>
+                    <p className="pw">비밀번호</p>
+                    <input data-testid="password-input" className="pwInput" onChange={onChangePw}/>
+                </div>
 
-            {emailCheck == true && pwCheck == true ? 
-            (
-                <button data-testid="signin-button" onClick={loginPost}>로그인</button>
-            ):(
-                <button data-testid="signin-button" disabled>로그인</button>
-            )}
+                {emailCheck == true && pwCheck == true ? 
+                (
+                    <button data-testid="signin-button" className="authButton" onClick={loginPost}>로그인</button>
+                ):(
+                    <button data-testid="signin-button" className="authButton" disabled>로그인</button>
+                )}
+            </div>
             
         </div>
     )

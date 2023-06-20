@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import AuthApi from "../apis/AuthApis";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
+import '../css/Auth.css';
 
 function SignUpPage() {
     const [email, setEmail] = useState('');
@@ -63,23 +64,26 @@ function SignUpPage() {
     return(
         <div>
             <Header></Header>
-            <h2>회원가입</h2>
-            <div>
-                <p>이메일</p>
-                <input data-testid="email-input" onChange={onChangeEmail}/>
-            </div>
+            <div className="auth">
+                <h2 className="authType">회원가입</h2>
+                <div>
+                    <p className="email">이메일</p>
+                    <input data-testid="email-input" className="emailInput" onChange={onChangeEmail}/>
+                </div>
 
-            <div>
-                <p>비밀번호</p>
-                <input data-testid="password-input" onChange={onChangePw}/>
-            </div>
+                <div>
+                    <p className="pw">비밀번호</p>
+                    <input data-testid="password-input" className="pwInput" onChange={onChangePw}/>
+                </div>
 
-            {emailCheck == true && pwCheck == true ? 
-            (
-                <button data-testid="signup-button" onClick={signUpPost}>회원가입</button>
-            ):(
-                <button data-testid="signup-button" disabled>회원가입</button>
-            )}
+                {emailCheck == true && pwCheck == true ? 
+                (
+                    <button data-testid="signup-button" className="authButton" onClick={signUpPost}>회원가입</button>
+                ):(
+                    <button data-testid="signup-button" className="authButton" disabled>회원가입</button>
+                )}
+
+            </div>
             
         </div>
     )

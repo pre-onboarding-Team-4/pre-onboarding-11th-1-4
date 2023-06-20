@@ -1,0 +1,56 @@
+.todoDiv{
+    width: 40%;
+    height: 400px;
+    border: 2px solid gray;
+    margin-top: 40px;
+    border-radius: 5%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: auto;
+}   
+
+.todoText {
+    text-decoration-line: underline;
+    text-underline-offset : 10px;
+    text-decoration-color: gray;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.todoAdd {
+    margin-bottom: 30px;
+}
+
+.todoInput {
+    width: 60%;
+    height: 20px;
+    text-align: left;
+    margin-left: 5%;
+}
+
+.todoAddButton {
+    height: 25px;
+    float: right;
+    margin-right: 10%;
+}
+
+.todoList {
+    text-align: left;
+    margin-left: 10%;
+}
+
+.todoItem {
+    margin-bottom: 10px;
+}
+
+.modiButton, .submitButton{
+    float: right;
+    margin-right: 10%;
+}
+
+.deleteButton, .cancelButton {
+    float: right;
+    margin-right: 10px;
+    
+}

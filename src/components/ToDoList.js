@@ -6,7 +6,7 @@ function ToDoList({todo, setTodo}) {
     console.log(todo)
     
     return(
-        <div>
+        <div className="todoList">
             {
             todo.map(function(a,i){
                 return(

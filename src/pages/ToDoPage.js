@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ToDoList from "../components/ToDoList.js";
 import ToDoApi from "../apis/ToDoApi.js";
 import Header from "../components/Header.js";
+import '../css/ToDo.css';
 
 function ToDoPage() {
     const navigate = useNavigate();
@@ -67,13 +68,15 @@ function ToDoPage() {
     return(
         <div>
             <Header></Header>
-            <h2>TODO</h2>
-            <div>
-                <input data-testid="new-todo-input" value={todoInput} onChange={onChangeToDo}/>
-                <button data-testid="new-todo-add-button" onClick={onClickToDo}>추가</button>
-            </div>
+            <div className="todoDiv">
+                <h2 className="todoText">TODO</h2>
+                <div className="todoAdd">
+                    <input data-testid="new-todo-input"  className="todoInput" value={todoInput} onChange={onChangeToDo}/>
+                    <button data-testid="new-todo-add-button"  className="todoAddButton"  onClick={onClickToDo}>추가</button>
+                </div>
 
-            <ToDoList todo={todo} setTodo={setTodo} />
+                <ToDoList todo={todo} setTodo={setTodo} />
+            </div>
         </div>
     )
 }
