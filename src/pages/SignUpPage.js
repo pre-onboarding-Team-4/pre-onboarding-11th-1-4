@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from "react";
 import AuthApi from "../apis/AuthApis";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 function SignUpPage() {
     const [email, setEmail] = useState('');
@@ -61,6 +62,7 @@ function SignUpPage() {
 
     return(
         <div>
+            <Header></Header>
             <h2>회원가입</h2>
             <div>
                 <p>이메일</p>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ToDoList from "../components/ToDoList.js";
 import ToDoApi from "../apis/ToDoApi.js";
+import Header from "../components/Header.js";
 
 function ToDoPage() {
     const navigate = useNavigate();
@@ -65,6 +66,7 @@ function ToDoPage() {
     
     return(
         <div>
+            <Header></Header>
             <h2>TODO</h2>
             <div>
                 <input data-testid="new-todo-input" value={todoInput} onChange={onChangeToDo}/>
