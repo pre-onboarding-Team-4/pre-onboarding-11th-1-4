@@ -7,8 +7,6 @@ function ToDoItems({todo, setTodo, a, i}) {
     const [checked, setChecked] = useState(false);
     const [isChecked, setIsChecked] = useState(a.isCompleted);
 
-    console.log(isChecked)
-    
     const onChangeModiInput = (e) => {
         setModiInput(e.target.value);
     }
