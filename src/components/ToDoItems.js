@@ -5,6 +5,9 @@ function ToDoItems({todo, setTodo, a, i}) {
     const [modiButton, setModiButton] = useState(false);
     const [modiInput, setModiInput] = useState(a.todo);
     const [checked, setChecked] = useState(false);
+    const [isChecked, setIsChecked] = useState(a.isCompleted);
+
+    console.log(isChecked)
     
     const onChangeModiInput = (e) => {
         setModiInput(e.target.value);
@@ -18,6 +21,7 @@ function ToDoItems({todo, setTodo, a, i}) {
     const onClickModify = () => {
         ToDoPut();
         setModiButton(false);
+        setIsChecked(checked);
         
     }
 
@@ -73,7 +77,7 @@ function ToDoItems({todo, setTodo, a, i}) {
             {modiButton == false ? (
                 <li className="todoItem">
                     <label>
-                        <input type="checkbox" disabled/>
+                        <input type="checkbox" disabled checked={isChecked}/>
                         <span>{a.todo}</span>
                     </label>
                     
