@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Form = styled.form`
@@ -34,11 +34,28 @@ const Form = styled.form`
   }
 `;
 
-const TodoForm = () => {
+type TodoFormProps = {
+  onCreate: (todo: string) => void;
+};
+
+const TodoForm = ({ onCreate }: TodoFormProps) => {
+  const [todo, setTodo] = useState('');
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    onCreate(todo);
+    setTodo('');
+  };
+
   return (
-    <Form>
+    <Form onSubmit={onSubmit}>
       <div className="field">
-        <input data-testid="new-todo-input" />
+        <input
+          data-testid="new-todo-input"
+          value={todo}
+          onChange={e => setTodo(e.target.value)}
+        />
         <button data-testid="new-todo-add-button">추가</button>
       </div>
     </Form>

@@ -7,6 +7,12 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 });
 
+export type UpdateProps = {
+  id: number;
+  todo: string;
+  isCompleted: boolean;
+};
+
 export const signUp = (field: { email: string; password: string }) =>
   api.post('/auth/signup', field);
 
@@ -21,14 +27,15 @@ export const getTodos = () =>
   });
 
 export const createTodo = (todo: string) =>
-  api.post('/todos', {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+  api.post(
+    '/todos',
+    { todo },
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
     },
-    data: {
-      todo,
-    },
-  });
+  );
 
 export const deleteTodo = (id: number) =>
   api.delete(`/todos/${id}`, {
@@ -37,12 +44,16 @@ export const deleteTodo = (id: number) =>
     },
   });
 
-export const updateTodo = (todo: string) =>
-  api.put('/todos', {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem('access_token')}`,
-    },
-    data: {
+export const updateTodo = ({ id, todo, isCompleted }: UpdateProps) =>
+  api.put(
+    `/todos/${id}`,
+    {
       todo,
+      isCompleted,
     },
-  });
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('access_token')}`,
+      },
+    },
+  );
