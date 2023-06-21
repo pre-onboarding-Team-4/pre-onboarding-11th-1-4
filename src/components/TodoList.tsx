@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { getTodos } from '../api';
+import TodoItem from './TodoItem';
 
 const TodoList = () => {
-  return <div></div>;
+  useEffect(() => {
+    (async () => {
+      const list = await getTodos();
+
+      console.log(list);
+    })();
+  }, []);
+
+  return (
+    <div>
+      <TodoItem />
+    </div>
+  );
 };
 
 export default TodoList;

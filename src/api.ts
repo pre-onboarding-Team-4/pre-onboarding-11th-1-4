@@ -13,7 +13,7 @@ export const signUp = (field: { email: string; password: string }) =>
 export const signin = (field: { email: string; password: string }) =>
   api.post('/auth/signin', field);
 
-export const todo = () =>
+export const getTodos = () =>
   api.get('/todos', {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('access_token')}`,
