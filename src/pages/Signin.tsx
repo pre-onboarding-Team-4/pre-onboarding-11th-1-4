@@ -7,10 +7,6 @@ const Signin = () => {
   const navigate = useNavigate();
   const { field, error, onChange } = useInput();
 
-  // const isValidate = useMemo(() => {
-  //   password
-  // }, [])
-
   const onSubmit = async (e: any) => {
     e.preventDefault();
 
@@ -29,8 +25,7 @@ const Signin = () => {
 
   return (
     <FormComp
-      name="로그인"
-      btnId="signin-button"
+      type="signin"
       field={field}
       error={error}
       onChange={onChange}

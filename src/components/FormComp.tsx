@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
 const Root = styled.div`
@@ -27,6 +28,7 @@ const Form = styled.form`
     width: 400px;
     height: 55px;
     font-size: 18px;
+    border-radius: 4px;
   }
 
   & .field {
@@ -36,7 +38,6 @@ const Form = styled.form`
       outline: none;
       border: none;
       border: 1px solid #ccc;
-      border-radius: 4px;
       padding-left: 10px;
     }
     &:not(:first-child) {
@@ -65,23 +66,37 @@ const Form = styled.form`
     color: red;
     font-size: 14px;
   }
+
+  & .link {
+    text-align: right;
+    margin-top: 12px;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  font-weight: 400;
+  color: rgb(142, 146, 159);
 `;
 
 const FormComp = ({
-  name,
-  btnId,
+  type,
   field,
   error,
   onChange,
   onSubmit,
 }: {
-  name: string;
-  btnId: string;
+  type: 'signin' | 'signup';
   field: { email: string; password: string };
   error: { email: string; password: string; cond: boolean };
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: any) => void;
 }) => {
+  const name = type === 'signin' ? '로그인' : '회원가입';
+  const btnDataId = type === 'signin' ? 'signin-button' : 'signup-button';
+  const href = type === 'signin' ? '/signup' : '/signin';
+  const linkName = type === 'signin' ? '회원가입' : '로그인';
+
   return (
     <Root>
       <Form onSubmit={onSubmit}>
@@ -108,7 +123,10 @@ const FormComp = ({
           />
         </div>
         {error.password && <p className="error">{error.password}</p>}
-        <button data-testid={btnId}>{name}</button>
+        <button data-testid={btnDataId}>{name}</button>
+        <div className="link">
+          <StyledLink to={href}>{linkName}</StyledLink>
+        </div>
       </Form>
     </Root>
   );

@@ -19,8 +19,7 @@ const Signup = () => {
 
   return (
     <FormComp
-      name="회원가입"
-      btnId="signup-button"
+      type="signup"
       field={field}
       error={error}
       onChange={onChange}
