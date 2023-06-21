@@ -4,35 +4,17 @@ const BASE_URL = 'http://localhost:8000';
 
 const api = axios.create({
   baseURL: BASE_URL,
+  headers: { 'Content-Type': 'application/json' },
 });
 
-api.interceptors.response.use(
-  res => res,
-  error => {
-    if (error.response.status === 401) {
-      window.location.href = '/';
-    }
-  },
-);
-
 export const signUp = (field: { email: string; password: string }) =>
-  api({
-    method: 'post',
-    url: 'auth/signup',
-    data: field,
-  });
+  api.post('/auth/signup', field);
 
 export const signin = (field: { email: string; password: string }) =>
-  api({
-    method: 'post',
-    url: 'auth/signin',
-    data: field,
-  });
+  api.post('/auth/signin', field);
 
 export const todo = () =>
-  api({
-    method: 'get',
-    url: '/todos',
+  api.get('/todos', {
     headers: {
       Authorization: `Bearer ${localStorage.getItem('access_token')}`,
     },

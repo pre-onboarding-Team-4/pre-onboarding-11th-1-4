@@ -10,11 +10,15 @@ const Signup = () => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
+    try {
+      const result = await signUp(field);
 
-    const result = await signUp(field);
-
-    console.log(result);
-    navigate('/signin');
+      if (result.status === 201) {
+        navigate('/signin');
+      }
+    } catch (error: any) {
+      alert(error.response.data.message.join(''));
+    }
   };
 
   return (

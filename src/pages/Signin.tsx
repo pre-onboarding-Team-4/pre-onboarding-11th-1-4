@@ -13,14 +13,16 @@ const Signin = () => {
     try {
       const result = await signin(field);
 
-      if (result.status === 200) {
+      if (result?.status === 200) {
         localStorage.setItem('access_token', result.data.access_token);
-      }
-    } catch (error) {
-      console.log(error);
-    }
 
-    navigate('/signup');
+        navigate('/todo');
+      } else {
+        alert('로그인이 실패하였습니다');
+      }
+    } catch (error: any) {
+      alert(error.response.data.message);
+    }
   };
 
   return (
