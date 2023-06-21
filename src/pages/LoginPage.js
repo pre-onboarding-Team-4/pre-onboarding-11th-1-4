@@ -14,9 +14,6 @@ function LoginPage() {
 
     const navigate = useNavigate();
 
-    //console.log(email, emailCheck)
-    //console.log(pw, pwCheck)
-
     useEffect(() => {
         if(localStorage.getItem('access_token')){
             navigate('/todo')
@@ -24,7 +21,6 @@ function LoginPage() {
     });
 
     const onChangeEmail = (e) => {
-        //console.log(e.target.value)
         let check = /@+/;
         if(check.test(e.target.value) == true){
             setEmail(e.target.value);
@@ -37,7 +33,6 @@ function LoginPage() {
     }
 
     const onChangePw = (e) => {
-        //console.log(e.target.value)
         let check = /.{8,}/;
         if(check.test(e.target.value) == true) {
             setPw(e.target.value);
@@ -53,9 +48,7 @@ function LoginPage() {
             email: email,
             password: pw
         }).then(function(response) {
-            // console.log(response)
             if(response.status == 200) {
-                //console.log(response.data.access_token)
                 localStorage.setItem("access_token", response.data.access_token);
                 navigate('/todo');
             }

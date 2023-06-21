@@ -12,10 +12,6 @@ function ToDoPage() {
 
     const [todoInput, setTodoInput] = useState('');
     const [todo, setTodo] = useState([]);
-    
-    
-
-    //console.log(todo)
 
     useEffect(() => {
 
@@ -44,7 +40,6 @@ function ToDoPage() {
             todo: todoInput
         }).then(function(response) {
             if(response.status == 201) {
-                //console.log("POST", response.data);
                 setTodo([...todo, response.data])
             }
         }).catch(function(error) {
@@ -56,11 +51,10 @@ function ToDoPage() {
     const ToDoGet = () => {
         ToDoApi.get("").then(function(response) {
             if(response.status == 200) {
-                //console.log("GET", response.data);
                 setTodo(response.data);
             }
         }).catch(function(error) {
-            console.log(error.response)
+            alert("error");
         })
     };
 

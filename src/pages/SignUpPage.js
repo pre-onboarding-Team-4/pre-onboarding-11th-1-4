@@ -13,8 +13,6 @@ function SignUpPage() {
     const [pwCheck, setPwCheck] = useState(false);
 
     const navigate = useNavigate();
-    //console.log(email, emailCheck)
-    //console.log(pw, pwCheck)
     
     useEffect(() => {
         if(localStorage.getItem('access_token')){
@@ -23,7 +21,6 @@ function SignUpPage() {
     });
 
     const onChangeEmail = (e) => {
-        //console.log(e.target.value)
         let check = /@+/;
         if(check.test(e.target.value) == true){
             setEmail(e.target.value);
@@ -36,7 +33,6 @@ function SignUpPage() {
     }
 
     const onChangePw = (e) => {
-        //console.log(e.target.value)
         let check = /.{8,}/;
         if(check.test(e.target.value) == true) {
             setPw(e.target.value);
@@ -52,7 +48,6 @@ function SignUpPage() {
             email: email,
             password: pw
         }).then(function(response){
-            // console.log(response);
             if(response.status == 201) {
                 navigate('/login');
             }

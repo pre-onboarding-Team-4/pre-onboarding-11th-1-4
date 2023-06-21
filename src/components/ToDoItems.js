@@ -5,8 +5,6 @@ function ToDoItems({todo, setTodo, a, i}) {
     const [modiButton, setModiButton] = useState(false);
     const [modiInput, setModiInput] = useState(a.todo);
     const [checked, setChecked] = useState(false);
-
-    //console.log(checked);
     
     const onChangeModiInput = (e) => {
         setModiInput(e.target.value);
@@ -40,7 +38,6 @@ function ToDoItems({todo, setTodo, a, i}) {
             isCompleted: checked
         }).then(function(response) {
             if(response.status == 200) {
-                console.log(response)
                 ToDoGet();
             }
         }).catch(function(error) {
@@ -53,7 +50,6 @@ function ToDoItems({todo, setTodo, a, i}) {
     const ToDoDelete = () => {
         ToDoApi.delete("/" + a.id).then(function(response) {
             if(response.status == 204) {
-                console.log(response);
                 ToDoGet();
             }
         }).catch(function(error) {
@@ -65,7 +61,6 @@ function ToDoItems({todo, setTodo, a, i}) {
     const ToDoGet = () => {
         ToDoApi.get("").then(function(response) {
             if(response.status == 200) {
-                //console.log("GET", response.data);
                 setTodo(response.data);
             }
         }).catch(function(error) {
