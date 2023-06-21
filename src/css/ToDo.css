@@ -42,15 +42,26 @@
 
 .todoItem {
     margin-bottom: 10px;
+    position: relative;
 }
 
-.modiButton, .submitButton{
-    float: right;
+/* .todoListButton{
+    text-align: right;
     margin-right: 10%;
+} */
+
+.modiButton, .submitButton{
+    position: absolute;
+    right: 25%;
+    
 }
 
 .deleteButton, .cancelButton {
-    float: right;
-    margin-right: 10px;
+    position: absolute;
+    right: 10%;
     
+}
+
+.modiInput{
+    width: 40%;
 }

@@ -81,16 +81,18 @@ function ToDoItems({todo, setTodo, a, i}) {
                         <input type="checkbox" disabled/>
                         <span>{a.todo}</span>
                     </label>
+                    
                     <button data-testid="modify-button" className="modiButton" onClick={()=>{
                         setModiButton(true);
                     }}>수정</button>
                     <button data-testid="delete-button" className="deleteButton" onClick={onClickDelete}>삭제</button>
+                    
                </li>
             ) : (
                 <li className="todoItem">
                     <label>
                         <input type="checkbox" onChange={onChangeCheckBox}/>
-                        <input data-testid="modify-input" value={modiInput} onChange={onChangeModiInput}/>
+                        <input data-testid="modify-input" className="modiInput" value={modiInput} onChange={onChangeModiInput}/>
                     </label>
                     <button data-testid="submit-button" className="submitButton" onClick={onClickModify}>제출</button>   
                     <button data-testid="cancel-button" className="cancelButton" onClick={()=>{
