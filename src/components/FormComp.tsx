@@ -123,7 +123,12 @@ const FormComp = ({
           />
         </div>
         {error.password && <p className="error">{error.password}</p>}
-        <button data-testid={btnDataId}>{name}</button>
+        <button
+          data-testid={btnDataId}
+          disabled={!field.email.includes('@') || field.password.length < 8}
+        >
+          {name}
+        </button>
         <div className="link">
           <StyledLink to={href}>{linkName}</StyledLink>
         </div>
