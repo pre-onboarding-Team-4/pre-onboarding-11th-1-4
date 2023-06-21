@@ -72,3 +72,4 @@
     - 클릭 시 해당 내용 삭제
 
 # 5. 배포 링크
+https://ekdls1218.github.io/wanted-pre-onboarding-frontend/signup
