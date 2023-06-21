@@ -10,7 +10,6 @@ import Toast from 'components/common/Toast';
 
 export default function TodoPage() {
   const [todoList, setTodoList] = useState<ITodo[]>([]);
-
   const [toast, setToast] = useState({ message: '', index: 0 });
   useEffect(() => {
     async function fetchTodo() {

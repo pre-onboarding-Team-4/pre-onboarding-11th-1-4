@@ -13,6 +13,7 @@ export const SignInForm = styled.form`
     gap: 10px;
   }
 `;
+
 export const SignInPage = styled.div`
   display: flex;
   flex-direction: column;
