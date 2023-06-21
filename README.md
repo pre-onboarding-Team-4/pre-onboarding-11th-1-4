@@ -1,74 +1,74 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# 1. 이름: 김다인
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 2. 프로젝트의 실행 방법
+- ### git clone
+  ```
+  git clone https://github.com/od-log/wanted-pre-onboarding-frontend.git
+  ```
+- ### 설치
+  ```
+  npm install
+  ```
+- ### 실행
+   ```
+   npm start
+   ```
 
-## Available Scripts
+# 3. 파일 구조
+```
+📦 src
+   ├─ apis
+   │  ├─ AuthApis.js
+   │  └─ ToDoApi.js
+   ├─ components
+   │  ├─ Header.js
+   │  ├─ ToDoItems.js
+   │  └─ ToDoList.js
+   ├─ css
+   │  ├─ Auth.css
+   │  ├─ Header.css
+   │  └─ ToDo.css
+   ├─ pages
+   │  ├─ LoginPage.js
+   │  ├─ SignUpPage.js
+   │  └─ ToDoPage.js
+   ├─ index.css
+   ├─ index.js
+   ├─ App.css
+   ├─ App.js
+   ├─ App.test.js
+   ├─ reportWebVitals.js
+   └─ setupTests.js
+```
 
-In the project directory, you can run:
+# 4. 기능
+  ### [ 회원가입 & 로그인 ]
+  - **이메일 유효성 검사 기능(@포함)**
+  - **비밀번호 유효성 검사 기능(8자 이상)**
+  - **로그인 여부에 따른 리다이렉트 구현**
+    - 토큰이 있을 때) 회원가입 -> TODO, 로그인 -> TODO
+    - 토큰이 없을 때) TODO -> 로그인
+  - **회원가입 성공 시 "/signin" 경로 이동**
+  - **로그인 성공 시 JWT는 응답받아 로컬 스토리지에 저장 후 "/todo" 경로로 이동**
+ 
+  ### [ TODO ]
+  - **목록 기능**
+    - 접속 시 목록 보여주기
+      
+  - **추가 기능**
+    - 입력 input 내용 목록에 추가하기
+    - 새로고침 시에도 추가한 내용이 그대로 목록에 남아있기
+      
+  - **완료 여부 수정**
+    
+  - **수정 기능**
+    - 수정 버튼 클릭 시 수정 모드 활성화
+    - 내용 및 완료 여부 수정 후 클릭 시 내용 업데이트 
+    - 취소 버튼 넣기
+      - 클릭 시 원래대로
+      - 수정 모드 비활성화
+        
+  - **삭제 기능**
+    - 클릭 시 해당 내용 삭제
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# wanted-pre-onboarding-frontend
->>>>>>> 35ee28582a046404dab58296bc9376b4ee97c1da
+# 5. 배포 링크
