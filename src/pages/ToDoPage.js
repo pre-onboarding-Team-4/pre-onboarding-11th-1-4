@@ -12,7 +12,7 @@ function ToDoPage() {
 
     const [todoInput, setTodoInput] = useState('');
     const [todo, setTodo] = useState([]);
-
+    
     
 
     //console.log(todo)
@@ -21,9 +21,9 @@ function ToDoPage() {
 
         if(!localStorage.getItem('access_token')){
             navigate('/login');
-        };
-
-        ToDoGet();    
+        }else{
+            ToDoGet();    
+        }
     },[]);
 
     

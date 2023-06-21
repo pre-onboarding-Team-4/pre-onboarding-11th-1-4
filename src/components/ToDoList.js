@@ -3,7 +3,7 @@ import ToDoItems from "./ToDoItems";
 import ToDoApi from "../apis/ToDoApi";
 
 function ToDoList({todo, setTodo}) {
-    console.log(todo)
+    //console.log(todo)
     
     return(
         <div className="todoList">

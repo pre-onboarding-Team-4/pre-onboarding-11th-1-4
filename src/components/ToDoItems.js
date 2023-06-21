@@ -6,7 +6,7 @@ function ToDoItems({todo, setTodo, a, i}) {
     const [modiInput, setModiInput] = useState(a.todo);
     const [checked, setChecked] = useState(false);
 
-    console.log(checked);
+    //console.log(checked);
     
     const onChangeModiInput = (e) => {
         setModiInput(e.target.value);
