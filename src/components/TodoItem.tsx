@@ -5,6 +5,10 @@ const Item = styled.li`
   display: flex;
   justify-content: space-between;
 
+  & + & {
+    margin-top: 12px;
+  }
+
   & > label {
     display: flex;
     gap: 0 10px;
@@ -37,16 +41,36 @@ const Item = styled.li`
   }
 `;
 
-const TodoItem = () => {
+type TodoItemProps = {
+  id: number;
+  todo: string;
+  isCompleted: boolean;
+  userId: number;
+  onDelete: (id: number) => void;
+};
+
+const TodoItem = ({
+  id,
+  todo,
+  isCompleted,
+  userId,
+  onDelete,
+}: TodoItemProps) => {
   return (
     <Item>
       <label>
-        <input type="checkbox" />
-        <span>TODO 1</span>
+        <input type="checkbox" checked={isCompleted} />
+        <span>{todo}</span>
       </label>
       <div className="btn-container">
         <button data-testid="modify-button">수정</button>
-        <button className="delete" data-testid="delete-button">
+        <button
+          className="delete"
+          data-testid="delete-button"
+          onClick={() => {
+            onDelete(id);
+          }}
+        >
           삭제
         </button>
       </div>

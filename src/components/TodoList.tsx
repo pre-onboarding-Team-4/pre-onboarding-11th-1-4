@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react';
-import { getTodos } from '../api';
 import TodoItem from './TodoItem';
 
-const TodoList = () => {
-  useEffect(() => {
-    (async () => {
-      const list = await getTodos();
-
-      console.log(list);
-    })();
-  }, []);
-
+const TodoList = ({
+  todos,
+  onDelete,
+}: {
+  todos: any;
+  onDelete: (id: number) => void;
+}) => {
   return (
     <div>
-      <TodoItem />
+      {todos.length > 0 &&
+        todos.map((todo: any) => (
+          <TodoItem {...todo} onDelete={onDelete} key={todo.id} />
+        ))}
     </div>
   );
 };
