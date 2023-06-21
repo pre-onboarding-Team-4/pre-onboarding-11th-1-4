@@ -49,7 +49,7 @@ function SignUpPage() {
             password: pw
         }).then(function(response){
             if(response.status == 201) {
-                navigate('/login');
+                navigate('/signin');
             }
         }).catch(function(error) {
             alert('error');

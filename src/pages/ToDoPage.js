@@ -16,7 +16,7 @@ function ToDoPage() {
     useEffect(() => {
 
         if(!localStorage.getItem('access_token')){
-            navigate('/login');
+            navigate('/signin');
         }else{
             ToDoGet();    
         }
