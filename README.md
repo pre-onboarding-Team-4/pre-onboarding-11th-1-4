@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 1. 이름: 김다인
 
 # 2. 프로젝트의 실행 방법
@@ -73,3 +74,6 @@
 
 # 5. 배포 링크
 https://ekdls1218.github.io/wanted-pre-onboarding-frontend/signup
+=======
+# pre-onboarding-11th-1-4
+>>>>>>> 779884cdd3335fe6bd3eb909c36d5a309518ff3d
