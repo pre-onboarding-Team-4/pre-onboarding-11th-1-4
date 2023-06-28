@@ -1,0 +1,5 @@
+.headerText{
+    text-decoration-line: underline;
+    text-underline-offset : 10px;
+    text-decoration-color: gray;
+}

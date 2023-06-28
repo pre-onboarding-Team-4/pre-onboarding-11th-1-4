@@ -1,0 +1,44 @@
+.auth {
+    width: 40%;
+    height: 350px;
+    border: 2px solid gray;
+    margin-top: 40px;
+    border-radius: 5%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.authType{
+    text-decoration-line: underline;
+    text-underline-offset : 10px;
+    text-decoration-color: gray;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.email {
+    text-align: left;
+    margin-left: 28%;
+    margin-bottom: 5px;
+}
+
+.emailInput {
+    height: 20px;
+}
+
+.pw{
+    text-align: left;
+    margin: 30px 0 5px 28%; 
+}
+
+.pwInput{
+    height: 20px;
+}
+
+.authButton{
+    width: 90px;
+    height: 35px;
+    margin-top: 45px;
+
+}
