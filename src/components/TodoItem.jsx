@@ -1,41 +1,81 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
-import { RiPencilFill } from 'react-icons/ri';
-import { BsTrash3 } from 'react-icons/bs';
-// import { RiCloseFill, RiPencilFill } from 'react-icons/ri';
-// import { BsCheckLg, BsTrash3 } from 'react-icons/bs';
+import { RiCloseFill, RiPencilFill } from 'react-icons/ri';
+import { BsCheckLg, BsTrash3 } from 'react-icons/bs';
 
-export default function TodoItem() {
+export default function TodoItem({ todo, onDelete, onToggle, onUpdate }) {
+  const { id, todo: text, isCompleted } = todo;
+
+  const [isEdit, setIsEdit] = useState(false);
+  const [editText, setEditText] = useState(text || '');
+
+  const onCancle = () => {
+    setEditText(text || '');
+    setIsEdit(false);
+  };
+
+  const onEdit = () => {
+    setIsEdit(false);
+    onUpdate({ id, todo: editText, isCompleted });
+  };
+
   return (
     <Li>
-      <Label htmlFor="1">
-        <Input id="1" type="checkbox" />
-        {/* NOTE: 편집 모드 아닐 때 */}
-        <span>할일</span>
-
-        {/* NOTE: 편집 모드 일 때 */}
-        {/* <input data-testid="modify-input" type="text" /> */}
+      <Label htmlFor={id}>
+        <Input
+          id={id}
+          type="checkbox"
+          checked={isCompleted}
+          onChange={() => {
+            onToggle(todo);
+          }}
+        />
+        {!isEdit ? (
+          <span>{text}</span>
+        ) : (
+          <input
+            data-testid="modify-input"
+            type="text"
+            value={editText}
+            onChange={(e) => setEditText(e.target.value)}
+          />
+        )}
       </Label>
 
-      {/* NOTE: 편집 모드 아닐 때 */}
-      <Div>
-        <Button data-testid="modify-button" type="button" aria-label="수정">
-          <RiPencilFill />
-        </Button>
-        <Button data-testid="delete-button" type="button" aria-label="삭제">
-          <BsTrash3 />
-        </Button>
-      </Div>
-
-      {/* NOTE: 편집 모드 일 때 */}
-      {/* <Div>
-          <Button data-testid="submit-button" type="button" aria-label="제출">
+      {!isEdit ? (
+        <Div>
+          <Button
+            data-testid="modify-button"
+            type="button"
+            aria-label="수정"
+            onClick={() => {
+              setIsEdit(true);
+            }}
+          >
+            <RiPencilFill />
+          </Button>
+          <Button
+            data-testid="delete-button"
+            type="button"
+            aria-label="삭제"
+            onClick={() => {
+              onDelete(id);
+            }}
+          >
+            <BsTrash3 />
+          </Button>
+        </Div>
+      ) : (
+        <Div>
+          <Button data-testid="submit-button" type="button" aria-label="제출" onClick={onEdit}>
             <BsCheckLg />
           </Button>
-          <Button data-testid="cancel-button" type="button" aria-label="취소">
+          <Button data-testid="cancel-button" type="button" aria-label="취소" onClick={onCancle}>
             <RiCloseFill />
           </Button>
-        </Div> */}
+        </Div>
+      )}
     </Li>
   );
 }

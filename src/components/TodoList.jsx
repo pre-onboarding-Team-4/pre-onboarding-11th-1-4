@@ -1,11 +1,20 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { styled } from 'styled-components';
 import TodoItem from './TodoItem';
 
-export default function TodoList() {
+export default function TodoList({ todos, onDelete, onToggle, onUpdate }) {
   return (
     <Ul>
-      <TodoItem />
+      {todos.map((todo) => (
+        <TodoItem
+          todo={todo}
+          onDelete={onDelete}
+          onToggle={onToggle}
+          onUpdate={onUpdate}
+          key={todo.id}
+        />
+      ))}
     </Ul>
   );
 }

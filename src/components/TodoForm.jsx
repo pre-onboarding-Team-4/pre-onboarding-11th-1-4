@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from 'styled-components';
 
-export default function TodoForm() {
+// eslint-disable-next-line react/prop-types
+export default function TodoForm({ onCreate }) {
+  const [todo, setTodo] = useState('');
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (todo.trim().length === 0) return;
+
+    onCreate(todo);
+    setTodo('');
+  };
+
   return (
-    <Form>
-      <Input type="text" placeholder="할 일 추가하기" />
-      <Button type="button">추가</Button>
+    <Form onSubmit={onSubmit}>
+      <Input
+        type="text"
+        placeholder="할 일 추가하기"
+        value={todo}
+        onChange={(e) => setTodo(e.target.value)}
+      />
+      <Button type="button" onClick={onSubmit}>
+        추가
+      </Button>
     </Form>
   );
 }
