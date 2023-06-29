@@ -9,23 +9,38 @@ const instance = axios.create({
   },
 });
 
-axios.interceptors.request.use(
-  function (config) {
-    return config;
+export const signIn = async ({ email, password }) => {
+  const response = await instance.post('/signin', {
+    email,
+    password,
+  });
+
+  return {
+    access_token: response.data.access_token,
+    message: '로그인에 성공했습니다.',
+  };
+};
+
+export const signUp = async ({ email, password }) => {
+  await instance.post('/signup', {
+    email,
+    password,
+  });
+
+  return {
+    message: '회원가입에 성공했습니다.',
+  };
+};
+
+instance.interceptors.response.use(
+  function (response) {
+    return response;
   },
   function (error) {
-    return error;
+    const { data } = error.response;
+    if (!data.message) {
+      return Promise.reject(new Error('알 수 없는 에러가 발생했습니다.'));
+    }
+    return Promise.reject(data.message);
   }
 );
-
-export const signIn = ({ email, password }) =>
-  instance.post('/signin', {
-    email,
-    password,
-  });
-
-export const signUp = ({ email, password }) =>
-  instance.post('/signup', {
-    email,
-    password,
-  });
