@@ -3,7 +3,7 @@ import { Outlet, createBrowserRouter, redirect } from 'react-router-dom';
 import App from './App';
 import NotFound from './pages/NotFound';
 
-const jwt = localStorage.getItem('access_token') || true;
+const jwt = localStorage.getItem('access_token');
 
 const privateMiddleware = () => {
   if (jwt) {
