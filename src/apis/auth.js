@@ -41,6 +41,6 @@ instance.interceptors.response.use(
     if (!data.message) {
       return Promise.reject(new Error('알 수 없는 에러가 발생했습니다.'));
     }
-    return Promise.reject(data.message);
+    return Promise.reject(new Error(data.message));
   }
 );
