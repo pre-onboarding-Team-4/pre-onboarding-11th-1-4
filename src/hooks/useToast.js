@@ -1,10 +1,16 @@
 import { useContext } from 'react';
 import { ToastContext } from '../ToastContext';
 
-export default function useToastContext() {
+export default function useToast() {
   const toastContext = useContext(ToastContext);
 
   if (!toastContext) throw new Error('Toast provider를 추가해주세요');
 
-  return toastContext;
+  const [toasts, setToasts] = toastContext;
+
+  const createToast = (toast) => {
+    setToasts([...toasts, toast]);
+  };
+
+  return createToast;
 }
