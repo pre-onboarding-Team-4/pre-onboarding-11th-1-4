@@ -33,10 +33,10 @@ export const signUp = async ({ email, password }) => {
 };
 
 instance.interceptors.response.use(
-  function (response) {
+  (response) => {
     return response;
   },
-  function (error) {
+  (error) => {
     const { data } = error.response;
     if (!data.message) {
       return Promise.reject(new Error('알 수 없는 에러가 발생했습니다.'));

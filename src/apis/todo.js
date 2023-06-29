@@ -46,22 +46,22 @@ export const deleteTodo = async (id) => {
 };
 
 instance.interceptors.request.use(
-  function (config) {
+  (config) => {
     const accessToken = localStorage.getItem('access_token');
     const newConfig = config;
     newConfig.headers.Authorization = `Bearer ${accessToken}`;
     return newConfig;
   },
-  function (error) {
+  (error) => {
     return Promise.reject(error);
   }
 );
 
 instance.interceptors.response.use(
-  function (response) {
+  (response) => {
     return response;
   },
-  function (error) {
+  (error) => {
     const { data } = error.response;
     if (!data.message) {
       return Promise.reject(new Error('알 수 없는 에러가 발생했습니다.'));
