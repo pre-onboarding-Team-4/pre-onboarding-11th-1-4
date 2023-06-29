@@ -15,8 +15,8 @@ export default function ToastsContextProvier({ children }) {
       {children}
       {createPortal(
         <ToastList>
-          {toasts.map(({ message }) => (
-            <Toast>{message}</Toast>
+          {toasts.map(({ message, type }) => (
+            <Toast type={type}>{message}</Toast>
           ))}
         </ToastList>,
         document.getElementById('toast')
