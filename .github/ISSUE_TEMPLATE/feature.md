@@ -4,7 +4,6 @@ about: 새로운 기능 및 기능 관련
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 ## 요구사항
