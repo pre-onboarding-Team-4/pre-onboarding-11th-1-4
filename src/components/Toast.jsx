@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 /* eslint-disable react/prop-types */
-export default function Toast({ children }) {
+export default function Toast({ children, type }) {
   const [isShown, setIsShown] = useState(true);
 
   useEffect(() => {
@@ -17,18 +17,34 @@ export default function Toast({ children }) {
 
   return isShown ? (
     <StyledToastWrapper>
-      <StyledToast>{children}</StyledToast>
+      <StyledToast type={type || 'none'}>{children}</StyledToast>
     </StyledToastWrapper>
   ) : null;
 }
+
+const styles = {
+  warn: {
+    backgroundColor: '#b94530',
+    color: 'var(--color-white)',
+  },
+  success: {
+    backgroundColor: '#2BAF1B',
+    color: 'var(--color-white)',
+  },
+  none: {
+    backgroundColor: 'var(--color-white)',
+    color: 'var(--color-black)',
+  },
+};
 
 export const StyledToast = styled.div`
   width: 200px;
   display: flex;
   align-items: center;
   padding: 20px 20px;
-  background-color: #b94530;
-  color: white;
+  background-color: ${({ type }) => styles[type].backgroundColor};
+  color: ${({ type }) => styles[type].color};
+  box-shadow: 3px 3px 3px 1px #bcbcbc;
 `;
 
 const fadeIn = keyframes`
