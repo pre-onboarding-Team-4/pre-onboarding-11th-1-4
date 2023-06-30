@@ -183,4 +183,14 @@ const Btn = styled.button`
   color: #ffffff;
   background-color: ${(props) => (props.disabled ? 'gray' : '#6610F2')};
   border-radius: 4px;
+  transition: background-color 200ms ease-in-out;
+  cursor: pointer;
+
+  &:not(:disabled):hover {
+    background-color: #4a179c;
+  }
+
+  &:disabled:hover {
+    cursor: not-allowed;
+  }
 `;
