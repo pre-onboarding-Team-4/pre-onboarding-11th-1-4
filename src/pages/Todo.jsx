@@ -74,9 +74,7 @@ export default function Todo() {
   return (
     <Section>
       <TodoHeader />
-      {state.length > 9 && (
-        <TodoList todos={state} onDelete={onDelete} onToggle={onToggle} onUpdate={onUpdate} />
-      )}
+      <TodoList todos={state} onDelete={onDelete} onToggle={onToggle} onUpdate={onUpdate} />
       <TodoForm onCreate={onCreate} />
     </Section>
   );
