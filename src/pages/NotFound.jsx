@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 function NotFound() {
   return (
@@ -7,6 +8,7 @@ function NotFound() {
       <ErrorMessage>PAGE NOT FOUND</ErrorMessage>
       <ErrorCode>404</ErrorCode>
       <ErrorMessage>요청한 페이지를 찾을 수 없습니다.</ErrorMessage>
+      <Link to="/">이전 페이지</Link>
     </Container>
   );
 }

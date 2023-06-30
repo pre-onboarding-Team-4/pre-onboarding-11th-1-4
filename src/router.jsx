@@ -1,6 +1,5 @@
 import React from 'react';
 import { Outlet, createBrowserRouter, redirect } from 'react-router-dom';
-import App from './App';
 import NotFound from './pages/NotFound';
 
 const jwt = localStorage.getItem('access_token');
@@ -23,40 +22,35 @@ const publicMiddleware = () => {
 
 const route = [
   {
-    element: <App />,
+    path: '',
+    loader: () => redirect('/signin'),
     errorElement: <NotFound />,
+  },
+  {
+    path: '/todo',
+    element: (
+      <div>
+        <h1>Header</h1>
+        <Outlet />
+      </div>
+    ),
+    loader: privateMiddleware,
     children: [
       {
-        path: '/todo',
-        element: (
-          <div>
-            <h1>Header</h1>
-            <Outlet />
-          </div>
-        ),
-        loader: privateMiddleware,
-        children: [
-          {
-            index: true,
-            element: <div>todo</div>,
-          },
-        ],
-      },
-      {
-        path: '/signin',
-        element: <div>signin</div>,
-        loader: publicMiddleware,
-      },
-      {
-        path: '/signup',
-        element: <div>signup</div>,
-        loader: publicMiddleware,
-      },
-      {
-        path: '',
-        loader: () => redirect('/signin'),
+        index: true,
+        element: <div>todo</div>,
       },
     ],
+  },
+  {
+    path: '/signin',
+    element: <div>signin</div>,
+    loader: publicMiddleware,
+  },
+  {
+    path: '/signup',
+    element: <div>signup</div>,
+    loader: publicMiddleware,
   },
 ];
 
