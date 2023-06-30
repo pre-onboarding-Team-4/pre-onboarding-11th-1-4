@@ -59,7 +59,11 @@ function AuthForm({ type, signUpOnClick, signInOnClick }) {
           onChange={emailOnChange}
           placeholder="이메일을 입력해주세요."
         />
-        {!validEmail ? <EmailValidText>이메일이 올바르지 않습니다.</EmailValidText> : ''}
+        {!validEmail && type === 'signup' ? (
+          <EmailValidText>이메일에 @ 포함되어야 합니다.</EmailValidText>
+        ) : (
+          ''
+        )}
 
         <PwInput
           type="password"
@@ -68,7 +72,11 @@ function AuthForm({ type, signUpOnClick, signInOnClick }) {
           onChange={pwOnChange}
           placeholder="비밀번호를 입력해주세요."
         />
-        {!validPw ? <PwValidText>비밀번호가 올바르지 않습니다.</PwValidText> : ''}
+        {!validPw && type === 'signup' ? (
+          <PwValidText>비밀번호는 8자 이상이여야 합니다.</PwValidText>
+        ) : (
+          ''
+        )}
       </UserInputForm>
 
       <Btn data-testid={btnId} type="submit" disabled={validCheck} onClick={btnOnClick}>
@@ -132,7 +140,7 @@ const PwInput = styled.input`
 
 const EmailValidText = styled.p`
   position: absolute;
-  width: 142px;
+  width: 170px;
   height: 17px;
   left: 12%;
   top: 52%;
@@ -146,7 +154,7 @@ const EmailValidText = styled.p`
 
 const PwValidText = styled.p`
   position: absolute;
-  width: 153px;
+  width: 180px;
   height: 17px;
   left: 12%;
   top: 101%;
