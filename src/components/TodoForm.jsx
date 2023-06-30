@@ -22,9 +22,7 @@ export default function TodoForm({ onCreate }) {
         value={todo}
         onChange={(e) => setTodo(e.target.value)}
       />
-      <Button type="button" onClick={onSubmit}>
-        추가
-      </Button>
+      <Button type="submit">추가</Button>
     </Form>
   );
 }
