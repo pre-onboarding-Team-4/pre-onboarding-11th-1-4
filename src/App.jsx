@@ -1,7 +1,8 @@
 import React from 'react';
+import ToastsContextProvier from './ToastContext';
 
 function App() {
-  return <div />;
+  return <ToastsContextProvier />;
 }
 
 export default App;
