@@ -49,7 +49,9 @@ instance.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem('access_token');
     const newConfig = config;
-    newConfig.headers.Authorization = `Bearer ${accessToken}`;
+    if (accessToken === undefined) {
+      newConfig.headers.Authorization = `Bearer ${accessToken}`;
+    }
     return newConfig;
   },
   (error) => {
