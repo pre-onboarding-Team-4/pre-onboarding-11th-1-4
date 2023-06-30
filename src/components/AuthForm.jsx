@@ -12,7 +12,7 @@ function AuthForm({ type, onClick }) {
     pw: '',
   });
 
-  const validCheck = !(validEmail && validPw);
+  const isValid = !(validEmail && validPw);
 
   const emailOnChange = (e) => {
     const emailCheck = /@+/;
@@ -80,7 +80,7 @@ function AuthForm({ type, onClick }) {
           </label>
         </div>
       </form>
-      <button data-testid={btnId} type="submit" disabled={validCheck} onClick={onClick}>
+      <button data-testid={btnId} type="submit" disabled={isValid} onClick={onClick}>
         {btnName}
       </button>
     </div>
