@@ -1,18 +1,25 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthForm from '../components/AuthForm';
+import useToast from '../hooks/useToast';
+import { signIn } from '../apis/auth';
 
 function SignIn() {
   const navigate = useNavigate();
+  const createToast = useToast();
 
-  const signInOnClick = () => {
-    // axios 로그인, jwt 받아와 저장
-    // 투두로 이동, 임시로 signin
-    navigate('/signin');
+  const signInOnClick = async ({ email, pw: password }) => {
+    try {
+      const { access_token: accessToken } = await signIn({ email, password });
+      localStorage.setItem('access_token', accessToken);
+      navigate('/todo');
+    } catch (error) {
+      createToast({ message: error.message, type: 'warn' });
+    }
   };
   return (
     <div>
-      <AuthForm type="signin" onClick={signInOnClick} />
+      <AuthForm type="signin" handleClick={signInOnClick} />
     </div>
   );
 }
