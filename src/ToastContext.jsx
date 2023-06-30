@@ -15,8 +15,11 @@ export default function ToastsContextProvier({ children }) {
       {children}
       {createPortal(
         <ToastList>
-          {toasts.map(({ message, type }) => (
-            <Toast type={type}>{message}</Toast>
+          {toasts.map(({ message, type }, idx) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Toast type={type} key={idx}>
+              {message}
+            </Toast>
           ))}
         </ToastList>,
         document.getElementById('toast')

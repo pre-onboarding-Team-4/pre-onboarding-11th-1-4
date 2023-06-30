@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import { Outlet, createBrowserRouter, redirect } from 'react-router-dom';
+import { createBrowserRouter, redirect } from 'react-router-dom';
 import NotFound from './pages/NotFound';
+import Todo from './pages/Todo';
 
 const jwt = localStorage.getItem('access_token');
 
@@ -8,7 +10,6 @@ const privateMiddleware = () => {
   if (jwt) {
     return true;
   }
-
   return redirect('/signin');
 };
 
@@ -16,7 +17,6 @@ const publicMiddleware = () => {
   if (jwt) {
     return redirect('/todo');
   }
-
   return true;
 };
 
@@ -28,19 +28,8 @@ const route = [
   },
   {
     path: '/todo',
-    element: (
-      <div>
-        <h1>Header</h1>
-        <Outlet />
-      </div>
-    ),
+    element: <Todo />,
     loader: privateMiddleware,
-    children: [
-      {
-        index: true,
-        element: <div>todo</div>,
-      },
-    ],
   },
   {
     path: '/signin',

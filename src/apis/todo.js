@@ -17,9 +17,10 @@ export const getTodoList = async () => {
 };
 
 export const createTodo = async (data) => {
-  await instance.post('/', { todo: data });
+  const response = await instance.post('/', { todo: data });
 
   return {
+    data: response.data,
     message: '성공적으로 추가했습니다.',
   };
 };
