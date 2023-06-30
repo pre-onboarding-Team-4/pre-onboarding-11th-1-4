@@ -2,9 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { styled } from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-function AuthForm({ type, onClick }) {
-  const navigate = useNavigate();
-
+function AuthForm({ type, handleClick }) {
   const btnId = type === 'signup' ? 'signup-button' : 'signin-button';
   const btnName = type === 'signup' ? '회원가입' : '로그인';
 
@@ -38,6 +36,7 @@ function AuthForm({ type, onClick }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleClick(auth);
   };
 
   const renderEmailError = () => {
@@ -75,10 +74,10 @@ function AuthForm({ type, onClick }) {
           placeholder="비밀번호를 입력해주세요."
         />
         {renderPwError() ? <PwValidText>비밀번호는 8자 이상이여야 합니다.</PwValidText> : ''}
+        <Btn data-testid={btnId} disabled={!isValid}>
+          {btnName}
+        </Btn>
       </UserInputForm>
-      <Btn data-testid={btnId} type="submit" disabled={!isValid} onClick={onClick}>
-        {btnName}
-      </Btn>
       {type === 'signup' ? (
         <SignInMove
           onClick={() => {
