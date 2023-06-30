@@ -50,7 +50,7 @@ npm start
 
 ## 기술 스택
 
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/> <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white"/> <img src="https://img.shields.io/badge/React Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white"/> <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white"/> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black"/>  <img src="https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=&logoColor=black"/>
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/> <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white"/> <img src="https://img.shields.io/badge/React Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white"/> <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white"/> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black"/> <img src="https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=&logoColor=black"/>
 
 ## 팀규칙
 
@@ -69,7 +69,30 @@ npm start
 ### 2. 파일/폴더 구조
 
 ```
-
+📦src
+ ┣ 📂apis
+ ┃ ┣ 📜auth.js
+ ┃ ┗ 📜todo.js
+ ┣ 📂components
+ ┃ ┣ 📜AuthForm.jsx
+ ┃ ┣ 📜Toast.jsx
+ ┃ ┣ 📜ToastList.jsx
+ ┃ ┣ 📜TodoForm.jsx
+ ┃ ┣ 📜TodoHeader.jsx
+ ┃ ┣ 📜TodoItem.jsx
+ ┃ ┗ 📜TodoList.jsx
+ ┣ 📂hooks
+ ┃ ┗ 📜useToast.js
+ ┣ 📂pages
+ ┃ ┣ 📜NotFound.jsx
+ ┃ ┣ 📜SignIn.jsx
+ ┃ ┣ 📜SignUp.jsx
+ ┃ ┗ 📜Todo.jsx
+ ┣ 📜App.jsx
+ ┣ 📜GlobalStyle.jsx
+ ┣ 📜index.jsx
+ ┣ 📜router.jsx
+ ┗ 📜ToastContext.jsx
 ```
 
 ### 3. Style 컨벤션
