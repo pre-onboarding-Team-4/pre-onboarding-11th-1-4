@@ -1,7 +1,10 @@
 import React, { useMemo, useState } from 'react';
 import { styled } from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 function AuthForm({ type, onClick }) {
+  const navigate = useNavigate();
+
   const btnId = type === 'signup' ? 'signup-button' : 'signin-button';
   const btnName = type === 'signup' ? '회원가입' : '로그인';
 
@@ -76,6 +79,23 @@ function AuthForm({ type, onClick }) {
       <Btn data-testid={btnId} type="submit" disabled={!isValid} onClick={onClick}>
         {btnName}
       </Btn>
+      {type === 'signup' ? (
+        <SignInMove
+          onClick={() => {
+            navigate('/signin');
+          }}
+        >
+          가입한 계정이 있으신가요?
+        </SignInMove>
+      ) : (
+        <SignUpMove
+          onClick={() => {
+            navigate('/signup');
+          }}
+        >
+          가입한 계정이 없으신가요?
+        </SignUpMove>
+      )}
     </FormContainer>
   );
 }
@@ -193,4 +213,18 @@ const Btn = styled.button`
   &:disabled:hover {
     cursor: not-allowed;
   }
+`;
+
+const SignInMove = styled.p`
+  margin-top: 16px;
+  font-size: 16px;
+  text-decoration: underline;
+  color: var(--color-placeholder);
+`;
+
+const SignUpMove = styled.p`
+  margin-top: 16px;
+  font-size: 16px;
+  text-decoration: underline;
+  color: var(--color-placeholder);
 `;
