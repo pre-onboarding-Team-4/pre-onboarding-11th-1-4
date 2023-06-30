@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { styled } from 'styled-components';
 
-function AuthForm({ type, onClick }) {
+function AuthForm({ type, handleClick }) {
   const btnId = type === 'signup' ? 'signup-button' : 'signin-button';
   const btnName = type === 'signup' ? '회원가입' : '로그인';
 
@@ -73,7 +73,7 @@ function AuthForm({ type, onClick }) {
         />
         {renderPwError() ? <PwValidText>비밀번호는 8자 이상이여야 합니다.</PwValidText> : ''}
       </UserInputForm>
-      <Btn data-testid={btnId} type="submit" disabled={!isValid} onClick={onClick}>
+      <Btn data-testid={btnId} type="submit" disabled={!isValid} onClick={() => handleClick(auth)}>
         {btnName}
       </Btn>
     </FormContainer>
