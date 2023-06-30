@@ -117,7 +117,7 @@ npm start
 | ------------------------ | ------------------------ |
 | ![Alt text](https://github.com/pre-onboarding-Team-4/pre-onboarding-11th-1-4/assets/35508595/88758c6d-e310-4179-bd44-ea971d483847) | ![Alt text](https://github.com/pre-onboarding-Team-4/pre-onboarding-11th-1-4/assets/35508595/fdfb8618-3870-4f08-844b-a84ea53c9094) |
 
-| 회원가입(유효성검사)     | Image 2                  |
+| 회원가입(유효성검사)     | 투두                 |
 | ------------------------ | ------------------------ |
 | ![Alt text](https://github.com/pre-onboarding-Team-4/pre-onboarding-11th-1-4/assets/35508595/c37daaa5-ec66-4840-ac66-88376bb93ea9) | ![Alt text](https://github.com/pre-onboarding-Team-4/pre-onboarding-11th-1-4/assets/35508595/992995a5-51de-4e78-9a17-913ca8f60c9e) |
 
