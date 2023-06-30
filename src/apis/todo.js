@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://www.pre-onboarding-selection-task.shop/todos';
-
 const instance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: `${process.env.REACT_APP_API_END_POINT}/todos`,
   headers: {
     'Content-Type': 'application/json',
   },
