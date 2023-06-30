@@ -220,6 +220,7 @@ const SignInMove = styled.p`
   font-size: 16px;
   text-decoration: underline;
   color: var(--color-placeholder);
+  cursor: pointer;
 `;
 
 const SignUpMove = styled.p`
@@ -227,4 +228,5 @@ const SignUpMove = styled.p`
   font-size: 16px;
   text-decoration: underline;
   color: var(--color-placeholder);
+  cursor: pointer;
 `;
