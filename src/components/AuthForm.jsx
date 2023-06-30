@@ -49,7 +49,7 @@ function AuthForm({ type, signUpOnClick, signInOnClick }) {
   };
 
   return (
-    <div>
+    <FormContainer>
       <Title>ToDoList</Title>
       <UserInputForm onSubmit={handleSubmit}>
         <EmailInput
@@ -82,18 +82,26 @@ function AuthForm({ type, signUpOnClick, signInOnClick }) {
       <Btn data-testid={btnId} type="submit" disabled={validCheck} onClick={btnOnClick}>
         {btnName}
       </Btn>
-    </div>
+    </FormContainer>
   );
 }
 
 export default AuthForm;
 
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+`;
+
 const Title = styled.h2`
-  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 144px;
   height: 46px;
-  left: calc(50% - 144px / 2 - 1px);
-  top: 107px;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 700;
@@ -103,47 +111,43 @@ const Title = styled.h2`
 `;
 
 const UserInputForm = styled.form`
-  position: absolute;
   width: 308px;
-  height: 215px;
-  left: 6px;
-  top: 153px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
 `;
 
 const EmailInput = styled.input`
-  position: absolute;
+  padding: 0 5px;
   width: 288px;
   height: 48px;
-  left: 10%;
-  top: 31.37%;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 23px;
   color: placeholder;
+  box-sizing: border-box;
 `;
 
 const PwInput = styled.input`
-  position: absolute;
+  padding: 0 5px;
   width: 288px;
   height: 48px;
-  left: 10%;
-  top: 80%;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 23px;
   color: placeholder;
+  box-sizing: border-box;
 `;
 
 const EmailValidText = styled.p`
-  position: absolute;
   width: 170px;
   height: 17px;
-  left: 12%;
-  top: 52%;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 350;
@@ -153,11 +157,8 @@ const EmailValidText = styled.p`
 `;
 
 const PwValidText = styled.p`
-  position: absolute;
   width: 180px;
   height: 17px;
-  left: 12%;
-  top: 101%;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 350;
@@ -167,11 +168,8 @@ const PwValidText = styled.p`
 `;
 
 const Btn = styled.button`
-  position: absolute;
   width: 288px;
   height: 47px;
-  left: 10%;
-  top: 65%;
   border: none;
   color: #ffffff;
   background-color: ${(props) => (props.disabled ? 'gray' : '#6610F2')};
