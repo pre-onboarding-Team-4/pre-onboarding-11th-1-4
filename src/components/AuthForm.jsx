@@ -37,6 +37,20 @@ function AuthForm({ type, onClick }) {
     e.preventDefault();
   };
 
+  const renderEmailError = () => {
+    if (type !== 'signup') return false;
+    if (auth.email === '') return false;
+    if (isValidEmail) return false;
+    return true;
+  };
+
+  const renderPwError = () => {
+    if (type !== 'signup') return false;
+    if (auth.pw === '') return false;
+    if (isValidPw) return false;
+    return true;
+  };
+
   return (
     <FormContainer>
       <Title>ToDoList</Title>
@@ -48,11 +62,7 @@ function AuthForm({ type, onClick }) {
           onChange={emailOnChange}
           placeholder="이메일을 입력해주세요."
         />
-        {!isValidEmail && type === 'signup' ? (
-          <EmailValidText>이메일에 @ 포함되어야 합니다.</EmailValidText>
-        ) : (
-          ''
-        )}
+        {renderEmailError() ? <EmailValidText>이메일에 @ 포함되어야 합니다.</EmailValidText> : ''}
 
         <PwInput
           type="password"
@@ -61,11 +71,7 @@ function AuthForm({ type, onClick }) {
           onChange={pwOnChange}
           placeholder="비밀번호를 입력해주세요."
         />
-        {!isValidPw && type === 'signup' ? (
-          <PwValidText>비밀번호는 8자 이상이여야 합니다.</PwValidText>
-        ) : (
-          ''
-        )}
+        {renderPwError() ? <PwValidText>비밀번호는 8자 이상이여야 합니다.</PwValidText> : ''}
       </UserInputForm>
       <Btn data-testid={btnId} type="submit" disabled={!isValid} onClick={onClick}>
         {btnName}
