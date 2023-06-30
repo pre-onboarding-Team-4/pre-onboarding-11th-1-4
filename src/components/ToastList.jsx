@@ -8,7 +8,7 @@ export default function ToastList({ children }) {
 
 export const StyledToastList = styled.ul`
   position: fixed;
-  top: 50px;
+  top: 10px;
   right: 10px;
   display: flex;
   flex-direction: column;

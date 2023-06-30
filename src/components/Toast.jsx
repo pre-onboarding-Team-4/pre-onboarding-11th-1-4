@@ -1,5 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
+import { AiFillExclamationCircle, AiFillCheckCircle, AiFillInfoCircle } from 'react-icons/ai';
+
+function getIcon(type) {
+  if (type === 'warn') {
+    return <AiFillExclamationCircle />;
+  }
+  if (type === 'success') {
+    return <AiFillCheckCircle />;
+  }
+  return <AiFillInfoCircle />;
+}
 
 /* eslint-disable react/prop-types */
 export default function Toast({ children, type }) {
@@ -17,7 +28,10 @@ export default function Toast({ children, type }) {
 
   return isShown ? (
     <StyledToastWrapper>
-      <StyledToast type={type || 'none'}>{children}</StyledToast>
+      <StyledToast type={type || 'none'}>
+        {getIcon(type || 'none')}
+        {children}
+      </StyledToast>
     </StyledToastWrapper>
   ) : null;
 }
@@ -41,6 +55,7 @@ export const StyledToast = styled.div`
   width: 200px;
   display: flex;
   align-items: center;
+  gap: 3px;
   padding: 20px 20px;
   background-color: ${({ type }) => styles[type].backgroundColor};
   color: ${({ type }) => styles[type].color};
@@ -50,12 +65,19 @@ export const StyledToast = styled.div`
 const fadeIn = keyframes`
   0% {
     opacity: 0;
+    transform: translateY(30px);
+  }
+
+  10% {
+    height: fit-content;
+    opacity: 1;
+    transform: translateY(0px);
   }
 
   90% {
     height: fit-content;
     opacity: 1;
-    transform: translateY(-20px);
+    transform: translateY(0px);
   }
 
   100%{
