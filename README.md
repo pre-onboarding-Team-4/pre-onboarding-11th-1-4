@@ -50,7 +50,7 @@ npm start
 
 ## 기술 스택
 
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/> <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white"/> <img src="https://img.shields.io/badge/React Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white"/> <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white"/> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black"/> <img src="https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=&logoColor=black"/>
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/> <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/> <img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=axios&logoColor=white"/> <img src="https://img.shields.io/badge/React Router-CA4245?style=flat-square&logo=reactrouter&logoColor=white"/> <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white"/> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=flat-square&logo=prettier&logoColor=black"/> <img src="https://img.shields.io/badge/Husky-red?style=flat-square&logo=&logoColor=black"/> <img src="https://img.shields.io/badge/Netlify-00C7B7?style=flat-square&logo=&logoColor=black"/>
 
 ## 팀규칙
 
@@ -64,6 +64,7 @@ npm start
 - refactor: 코드 리펙토링
 - test: 테스트 코드, 리펙토링 테스트 코드 추가
 - chore: 빌드 업무 수정, 패키지 매니저 수정
+- design: 스타일 작업
 ```
 
 ### 2. 파일/폴더 구조
@@ -97,8 +98,10 @@ npm start
 
 ### 3. Style 컨벤션
 
+```
 - Styled-Component를 활용한 스타일링
 - style.js를 따로가져가지 않고, 각 jsx 컴포넌트 하단부에 스타일 작성
+```
 
 ## 서비스 소개
 
@@ -109,6 +112,14 @@ npm start
 - Todo: 추가, 수정/취소, 삭제 기능
 - 직접 만든 Toast UI를 활용한 사용자 피드백
 - 토큰 유무에 따른 리다이렉트 기능
+
+| 로그인                   | 회원가입                 |
+| ------------------------ | ------------------------ |
+| ![Alt text](image-3.png) | ![Alt text](image-4.png) |
+
+| 회원가입(유효성검사)     | Image 2                  |
+| ------------------------ | ------------------------ |
+| ![Alt text](image-5.png) | ![Alt text](image-2.png) |
 
 ### 2. Best Practice
 
