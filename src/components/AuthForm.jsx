@@ -35,6 +35,7 @@ function AuthForm({ type, handleClick }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleClick(auth);
   };
 
   const renderEmailError = () => {
@@ -72,10 +73,10 @@ function AuthForm({ type, handleClick }) {
           placeholder="비밀번호를 입력해주세요."
         />
         {renderPwError() ? <PwValidText>비밀번호는 8자 이상이여야 합니다.</PwValidText> : ''}
+        <Btn data-testid={btnId} disabled={!isValid}>
+          {btnName}
+        </Btn>
       </UserInputForm>
-      <Btn data-testid={btnId} type="submit" disabled={!isValid} onClick={() => handleClick(auth)}>
-        {btnName}
-      </Btn>
     </FormContainer>
   );
 }
