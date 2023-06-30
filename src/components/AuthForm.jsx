@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
-function AuthForm({ type, signUpOnClick, signInOnClick }) {
+function AuthForm({ type, onClick }) {
   const btnId = type === 'signup' ? 'signup-button' : 'signin-button';
   const btnName = type === 'signup' ? '회원가입' : '로그인';
-  const btnOnClick = type === 'signup' ? signUpOnClick : signInOnClick;
 
   const [validEmail, setValidEmail] = useState(false);
   const [validPw, setValidPw] = useState(false);
@@ -81,7 +80,7 @@ function AuthForm({ type, signUpOnClick, signInOnClick }) {
           </label>
         </div>
       </form>
-      <button data-testid={btnId} type="submit" disabled={validCheck} onClick={btnOnClick}>
+      <button data-testid={btnId} type="submit" disabled={validCheck} onClick={onClick}>
         {btnName}
       </button>
     </div>
