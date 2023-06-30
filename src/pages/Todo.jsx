@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useEffect, useReducer } from 'react';
 import { styled } from 'styled-components';
 import TodoHeader from '../components/TodoHeader';

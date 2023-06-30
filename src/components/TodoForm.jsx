@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { styled } from 'styled-components';
 
-// eslint-disable-next-line react/prop-types
 export default function TodoForm({ onCreate }) {
   const [todo, setTodo] = useState('');
 

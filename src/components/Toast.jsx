@@ -12,7 +12,6 @@ function getIcon(type) {
   return <AiFillInfoCircle />;
 }
 
-/* eslint-disable react/prop-types */
 export default function Toast({ children, type }) {
   const [isShown, setIsShown] = useState(true);
 
@@ -55,8 +54,10 @@ export const StyledToast = styled.div`
   width: 200px;
   display: flex;
   align-items: center;
-  gap: 3px;
-  padding: 20px 20px;
+  gap: 15px;
+  line-height: 1.5;
+  border-radius: 5px;
+  padding: 15px 15px;
   background-color: ${({ type }) => styles[type].backgroundColor};
   color: ${({ type }) => styles[type].color};
   box-shadow: 3px 3px 3px 1px #bcbcbc;

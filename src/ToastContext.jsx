@@ -5,7 +5,6 @@ import ToastList from './components/ToastList';
 
 export const ToastContext = createContext(null);
 
-/* eslint-disable react/prop-types */
 export default function ToastsContextProvier({ children }) {
   const [toasts, setToasts] = useState([]);
   const data = useMemo(() => [toasts, setToasts], [toasts]);

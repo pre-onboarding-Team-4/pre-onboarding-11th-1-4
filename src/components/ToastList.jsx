@@ -1,7 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
 
-/* eslint-disable react/prop-types */
 export default function ToastList({ children }) {
   return <StyledToastList>{children}</StyledToastList>;
 }
