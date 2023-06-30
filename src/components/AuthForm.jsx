@@ -1,45 +1,35 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 
 function AuthForm({ type, onClick }) {
   const btnId = type === 'signup' ? 'signup-button' : 'signin-button';
   const btnName = type === 'signup' ? '회원가입' : '로그인';
-
-  const [validEmail, setValidEmail] = useState(false);
-  const [validPw, setValidPw] = useState(false);
 
   const [auth, setAuth] = useState({
     email: '',
     pw: '',
   });
 
-  const isValid = !(validEmail && validPw);
+  const emailRegex = /@+/;
+  const pwRegex = /.{8,}/;
+
+  const isValidEmail = useMemo(() => emailRegex.test(auth.email), [auth.email]);
+  const isValidPw = useMemo(() => pwRegex.test(auth.pw), [auth.pw]);
+  const isValid = isValidEmail && isValidPw;
 
   const emailOnChange = (e) => {
-    const emailCheck = /@+/;
     const emailInput = {
       ...auth,
       [e.target.name]: e.target.value,
     };
     setAuth(emailInput);
-    if (emailCheck.test(emailInput.email)) {
-      setValidEmail(true);
-    } else {
-      setValidEmail(false);
-    }
   };
 
   const pwOnChange = (e) => {
-    const pwCheck = /.{8,}/;
     const pwInput = {
       ...auth,
       [e.target.name]: e.target.value,
     };
     setAuth(pwInput);
-    if (pwCheck.test(pwInput.pw)) {
-      setValidPw(true);
-    } else {
-      setValidPw(false);
-    }
   };
 
   const handleSubmit = (e) => {
@@ -61,7 +51,7 @@ function AuthForm({ type, onClick }) {
               onChange={emailOnChange}
               placeholder="이메일을 입력해주세요."
             />
-            {auth.email === '' || validEmail ? '' : <p>이메일이 올바르지 않습니다.</p>}
+            {auth.email === '' || isValidEmail ? '' : <p>이메일이 올바르지 않습니다.</p>}
           </label>
         </div>
 
@@ -76,11 +66,11 @@ function AuthForm({ type, onClick }) {
               onChange={pwOnChange}
               placeholder="비밀번호를 입력해주세요."
             />
-            {auth.pw === '' || validPw ? '' : <p>비밀번호가 올바르지 않습니다.</p>}
+            {auth.pw === '' || isValidPw ? '' : <p>비밀번호가 올바르지 않습니다.</p>}
           </label>
         </div>
       </form>
-      <button data-testid={btnId} type="submit" disabled={isValid} onClick={onClick}>
+      <button data-testid={btnId} type="submit" disabled={!isValid} onClick={onClick}>
         {btnName}
       </button>
     </div>
