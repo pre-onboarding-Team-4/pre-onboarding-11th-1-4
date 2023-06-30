@@ -1,12 +1,10 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { createBrowserRouter, redirect } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Todo from './pages/Todo';
 
-const jwt = localStorage.getItem('access_token');
-
 const privateMiddleware = () => {
+  const jwt = localStorage.getItem('access_token');
   if (jwt) {
     return true;
   }
@@ -14,6 +12,7 @@ const privateMiddleware = () => {
 };
 
 const publicMiddleware = () => {
+  const jwt = localStorage.getItem('access_token');
   if (jwt) {
     return redirect('/todo');
   }
