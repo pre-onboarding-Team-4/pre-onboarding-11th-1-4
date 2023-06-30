@@ -62,7 +62,7 @@ function AuthForm({ type, signUpOnClick, signInOnClick }) {
               onChange={emailOnChange}
               placeholder="이메일을 입력해주세요."
             />
-            {!validEmail ? <p>이메일이 올바르지 않습니다.</p> : ''}
+            {auth.email === '' || validEmail ? '' : <p>이메일이 올바르지 않습니다.</p>}
           </label>
         </div>
 
@@ -77,11 +77,10 @@ function AuthForm({ type, signUpOnClick, signInOnClick }) {
               onChange={pwOnChange}
               placeholder="비밀번호를 입력해주세요."
             />
-            {!validPw ? <p>비밀번호가 올바르지 않습니다.</p> : ''}
+            {auth.pw === '' || validPw ? '' : <p>비밀번호가 올바르지 않습니다.</p>}
           </label>
         </div>
       </form>
-
       <button data-testid={btnId} type="submit" disabled={validCheck} onClick={btnOnClick}>
         {btnName}
       </button>
