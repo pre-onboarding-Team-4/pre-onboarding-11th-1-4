@@ -11,7 +11,9 @@
 ## 실행 방법
 
 ```
-
+git clone https://github.com/pre-onboarding-Team-4/pre-onboarding-11th-1-4.git
+npm install
+npm start
 ```
 
 ## 환경 설정
