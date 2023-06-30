@@ -106,18 +106,18 @@ const Title = styled.h2`
 `;
 
 const UserInputForm = styled.form`
-  width: 308px;
-  margin-bottom: 40px;
+  width: 100%;
+  max-width: 288px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
 `;
 
 const EmailInput = styled.input`
-  padding: 0 5px;
+  padding: 0 12px;
   width: 288px;
   height: 48px;
+  margin-bottom: 8px;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 400;
@@ -125,12 +125,19 @@ const EmailInput = styled.input`
   line-height: 23px;
   color: placeholder;
   box-sizing: border-box;
+  outline: none;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  &:focus {
+    border-color: var(--color-primary);
+  }
 `;
 
 const PwInput = styled.input`
-  padding: 0 5px;
+  padding: 0 12px;
   width: 288px;
   height: 48px;
+  margin-bottom: 8px;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 400;
@@ -138,27 +145,35 @@ const PwInput = styled.input`
   line-height: 23px;
   color: placeholder;
   box-sizing: border-box;
+  outline: none;
+  border: 1px solid #6c757d;
+  border-radius: 4px;
+  &:focus {
+    border-color: var(--color-primary);
+  }
 `;
 
 const EmailValidText = styled.p`
-  width: 170px;
-  height: 17px;
+  width: 100%;
+  padding-left: 12px;
+  margin: 0 0 8px;
+  text-align: left;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 350;
   font-size: 12px;
-  line-height: 17px;
   color: #fb0000;
 `;
 
 const PwValidText = styled.p`
-  width: 180px;
-  height: 17px;
+  width: 100%;
+  padding-left: 12px;
+  margin: 0 0 8px;
+  text-align: left;
   font-family: 'Noto Sans KR';
   font-style: normal;
   font-weight: 350;
   font-size: 12px;
-  line-height: 17px;
   color: #fb0000;
 `;
 
@@ -169,4 +184,14 @@ const Btn = styled.button`
   color: #ffffff;
   background-color: ${(props) => (props.disabled ? 'gray' : '#6610F2')};
   border-radius: 4px;
+  transition: background-color 200ms ease-in-out;
+  cursor: pointer;
+
+  &:not(:disabled):hover {
+    background-color: #4a179c;
+  }
+
+  &:disabled:hover {
+    cursor: not-allowed;
+  }
 `;
