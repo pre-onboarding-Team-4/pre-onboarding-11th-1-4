@@ -37,7 +37,6 @@ instance.interceptors.response.use(
   (error) => {
     const { data } = error.response;
     if (!data.message) {
-      console.log(error);
       return Promise.reject(new Error('알 수 없는 에러가 발생했습니다.'));
     }
     return Promise.reject(new Error(data.message));
