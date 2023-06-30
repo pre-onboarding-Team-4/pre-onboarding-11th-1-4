@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useReducer } from 'react';
 import { styled } from 'styled-components';
 import TodoHeader from '../components/TodoHeader';
 import TodoForm from '../components/TodoForm';
 import TodoList from '../components/TodoList';
-import apis from '../testApi';
+import { createTodo, deleteTodo, getTodoList, updateTodo } from '../apis/todo';
+import useToast from '../hooks/useToast';
 
 function todoReducer(state, action) {
   switch (action.type) {
@@ -27,44 +29,72 @@ function todoReducer(state, action) {
 }
 
 export default function Todo() {
+  const createToast = useToast();
   const [state, dispatch] = useReducer(todoReducer, []);
 
   const getTodos = async () => {
-    const todos = await apis.fetchTodos();
+    try {
+      const { todoList, message } = await getTodoList();
 
-    dispatch({ type: 'GET', todos });
+      dispatch({ type: 'GET', todos: todoList });
+      createToast({ message, type: 'success' });
+    } catch (error) {
+      createToast({ message: error.message, type: 'warn' });
+    }
   };
 
   const onDelete = async (id) => {
-    dispatch({ type: 'DELETE', id });
+    try {
+      const { message } = await deleteTodo(id);
 
-    await apis.deleteTodo(id);
+      dispatch({ type: 'DELETE', id });
+      createToast({ message, type: 'success' });
+    } catch (error) {
+      createToast({ message: error.message, type: 'warn' });
+    }
   };
 
   const onCreate = async (todo) => {
-    const text = await apis.createTodo(todo);
+    try {
+      const { data, message } = await createTodo(todo);
 
-    dispatch({ type: 'CREATE', todo: text });
+      dispatch({ type: 'CREATE', todo: data });
+      createToast({ message, type: 'success' });
+    } catch (error) {
+      const messages = error.message.split(',');
+
+      createToast({ message: messages.length > 1 ? messages[1] : messages[0], type: 'warn' });
+    }
   };
 
   const onToggle = async ({ id, todo, isCompleted }) => {
-    dispatch({ type: 'TOGGLE', id });
+    try {
+      const { message } = await updateTodo(id, {
+        todo,
+        isCompleted: !isCompleted,
+      });
 
-    await apis.updateTodo({
-      id,
-      todo,
-      isCompleted: !isCompleted,
-    });
+      createToast({ message, type: 'success' });
+
+      dispatch({ type: 'TOGGLE', id });
+    } catch (error) {
+      createToast({ message: error.message, type: 'warn' });
+    }
   };
 
   const onUpdate = async ({ id, todo, isCompleted }) => {
-    dispatch({ type: 'UPDATE', payload: { id, todo, isCompleted } });
+    try {
+      dispatch({ type: 'UPDATE', payload: { id, todo, isCompleted } });
 
-    await apis.updateTodo({
-      id,
-      todo,
-      isCompleted,
-    });
+      const { message } = await updateTodo(id, {
+        todo,
+        isCompleted,
+      });
+
+      createToast({ message, type: 'success' });
+    } catch (error) {
+      createToast({ message: error.message, type: 'warn' });
+    }
   };
 
   useEffect(() => {
