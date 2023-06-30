@@ -6,6 +6,8 @@ function AuthForm({ type, handleClick }) {
   const btnId = type === 'signup' ? 'signup-button' : 'signin-button';
   const btnName = type === 'signup' ? '회원가입' : '로그인';
 
+  const navigate = useNavigate();
+
   const [auth, setAuth] = useState({
     email: '',
     pw: '',
