@@ -2,6 +2,8 @@ import React from 'react';
 import { createBrowserRouter, redirect } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Todo from './pages/Todo';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
 
 const privateMiddleware = () => {
   const jwt = localStorage.getItem('access_token');
@@ -32,12 +34,20 @@ const route = [
   },
   {
     path: '/signin',
-    element: <div>signin</div>,
+    element: (
+      <div>
+        <SignIn />
+      </div>
+    ),
     loader: publicMiddleware,
   },
   {
     path: '/signup',
-    element: <div>signup</div>,
+    element: (
+      <div>
+        <SignUp />
+      </div>
+    ),
     loader: publicMiddleware,
   },
 ];
