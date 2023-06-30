@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import { styled } from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 function AuthForm({ type, handleClick }) {
   const btnId = type === 'signup' ? 'signup-button' : 'signin-button';
@@ -77,6 +78,23 @@ function AuthForm({ type, handleClick }) {
           {btnName}
         </Btn>
       </UserInputForm>
+      {type === 'signup' ? (
+        <SignInMove
+          onClick={() => {
+            navigate('/signin');
+          }}
+        >
+          가입한 계정이 있으신가요?
+        </SignInMove>
+      ) : (
+        <SignUpMove
+          onClick={() => {
+            navigate('/signup');
+          }}
+        >
+          가입한 계정이 없으신가요?
+        </SignUpMove>
+      )}
     </FormContainer>
   );
 }
@@ -194,4 +212,20 @@ const Btn = styled.button`
   &:disabled:hover {
     cursor: not-allowed;
   }
+`;
+
+const SignInMove = styled.p`
+  margin-top: 16px;
+  font-size: 16px;
+  text-decoration: underline;
+  color: var(--color-placeholder);
+  cursor: pointer;
+`;
+
+const SignUpMove = styled.p`
+  margin-top: 16px;
+  font-size: 16px;
+  text-decoration: underline;
+  color: var(--color-placeholder);
+  cursor: pointer;
 `;
