@@ -12,7 +12,7 @@ function SignUp() {
 
   return (
     <div>
-      <AuthForm type="signup" signUpOnClick={signUpOnClick} />
+      <AuthForm type="signup" onClick={signUpOnClick} />
     </div>
   );
 }

@@ -12,7 +12,7 @@ function SignIn() {
   };
   return (
     <div>
-      <AuthForm type="signin" signInOnClick={signInOnClick} />
+      <AuthForm type="signin" onClick={signInOnClick} />
     </div>
   );
 }

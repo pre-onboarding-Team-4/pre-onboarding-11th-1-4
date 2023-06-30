@@ -1,47 +1,36 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { styled } from 'styled-components';
 
-function AuthForm({ type, signUpOnClick, signInOnClick }) {
+function AuthForm({ type, onClick }) {
   const btnId = type === 'signup' ? 'signup-button' : 'signin-button';
   const btnName = type === 'signup' ? '회원가입' : '로그인';
-  const btnOnClick = type === 'signup' ? signUpOnClick : signInOnClick;
-
-  const [validEmail, setValidEmail] = useState(false);
-  const [validPw, setValidPw] = useState(false);
 
   const [auth, setAuth] = useState({
     email: '',
     pw: '',
   });
 
-  const validCheck = !(validEmail && validPw);
+  const emailRegex = /@+/;
+  const pwRegex = /.{8,}/;
+
+  const isValidEmail = useMemo(() => emailRegex.test(auth.email), [auth.email]);
+  const isValidPw = useMemo(() => pwRegex.test(auth.pw), [auth.pw]);
+  const isValid = isValidEmail && isValidPw;
 
   const emailOnChange = (e) => {
-    const emailCheck = /@+/;
     const emailInput = {
       ...auth,
       [e.target.name]: e.target.value,
     };
     setAuth(emailInput);
-    if (emailCheck.test(emailInput.email)) {
-      setValidEmail(true);
-    } else {
-      setValidEmail(false);
-    }
   };
 
   const pwOnChange = (e) => {
-    const pwCheck = /.{8,}/;
     const pwInput = {
       ...auth,
       [e.target.name]: e.target.value,
     };
     setAuth(pwInput);
-    if (pwCheck.test(pwInput.pw)) {
-      setValidPw(true);
-    } else {
-      setValidPw(false);
-    }
   };
 
   const handleSubmit = (e) => {
@@ -59,7 +48,7 @@ function AuthForm({ type, signUpOnClick, signInOnClick }) {
           onChange={emailOnChange}
           placeholder="이메일을 입력해주세요."
         />
-        {!validEmail && type === 'signup' ? (
+        {!isValidEmail && type === 'signup' ? (
           <EmailValidText>이메일에 @ 포함되어야 합니다.</EmailValidText>
         ) : (
           ''
@@ -72,14 +61,13 @@ function AuthForm({ type, signUpOnClick, signInOnClick }) {
           onChange={pwOnChange}
           placeholder="비밀번호를 입력해주세요."
         />
-        {!validPw && type === 'signup' ? (
+        {!isValidPw && type === 'signup' ? (
           <PwValidText>비밀번호는 8자 이상이여야 합니다.</PwValidText>
         ) : (
           ''
         )}
       </UserInputForm>
-
-      <Btn data-testid={btnId} type="submit" disabled={validCheck} onClick={btnOnClick}>
+      <Btn data-testid={btnId} type="submit" disabled={!isValid} onClick={onClick}>
         {btnName}
       </Btn>
     </div>
